@@ -1,0 +1,1 @@
+{"name":"victor-portfolio","private":true,"scripts":{"dev":"node server.cjs","start":"node server.cjs"}}
