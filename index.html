@@ -1,98 +1,31 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
+  <script src="page-transition.js"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#b8b7b3">
   <meta name="description" content="Victor — estudo visual de pele, mármore e blackwork.">
   <title>Victor — Pele & Mármore</title>
-  <style>
-    @font-face { font-family: 'Cinzel Decorative'; src: url('assets/fonts/CinzelDecorative-Regular.ttf') format('truetype'); font-style: normal; font-weight: 400; font-display: swap; }
-    @font-face { font-family: 'Cinzel Decorative'; src: url('assets/fonts/CinzelDecorative-Bold.ttf') format('truetype'); font-style: normal; font-weight: 700; font-display: swap; }
-    * { box-sizing: border-box; }
-    html, body { margin: 0; width: 100%; min-height: 100%; background: #b8b7b3; }
-    body { overflow: hidden; font-family: 'Cinzel Decorative', serif; }
-    button, input, textarea, select { font: inherit; }
-    .site-header { position: absolute; z-index: 5; top: 0; left: 0; width: 100%; min-height: 110px; display: flex; align-items: center; justify-content: space-between; padding: 24px 36px; color: #101110; }
-    .header-logo { display: flex; align-items: center; justify-content: center; width: 38px; height: 62px; }
-    .header-logo img { display: block; height: 58px; width: auto; filter: brightness(0); }
-    .header-name { position: absolute; left: 50%; transform: translateX(-50%); color: inherit; text-decoration: none; font-size: clamp(18px, 1.55vw, 28px); letter-spacing: .045em; white-space: nowrap; }
-    .header-nav { display: flex; align-items: center; gap: 24px; }
-    .mobile-menu-logo { display: none; }
-    .header-link { display: inline-flex; color: inherit; text-decoration: none; font-size: 14px; line-height: 1.5; white-space: nowrap; }
-    .link-window { display: block; height: 1.5em; overflow: hidden; }
-    .link-track { display: flex; flex-direction: column; transition: transform .55s cubic-bezier(.76,0,.24,1); }
-    .link-track > span { display: block; height: 1.5em; }
-    .header-link:hover .link-track, .header-link:focus-visible .link-track { transform: translateY(-50%); }
-    .header-link:focus-visible, .header-name:focus-visible, .header-logo:focus-visible, .menu-toggle:focus-visible { outline: 1px solid currentColor; outline-offset: 6px; }
-    .header-talk { padding: 12px 20px; border: 1px solid #101110; border-radius: 999px; transition: background .35s, color .35s; }
-    .header-talk:hover, .header-talk:focus-visible { background: #101110; color: #f4f3ef; }
-    .menu-toggle { display: none; width: 44px; height: 44px; align-items: center; justify-content: center; border: 0; padding: 6px; background: none; color: inherit; cursor: pointer; -webkit-tap-highlight-color: transparent; }
-    .menu-icon { display: block; width: 32px; height: 32px; overflow: visible; }
-    .menu-icon line { stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; transform-origin: 16px 16px; transition: transform .65s cubic-bezier(.22,.8,.25,1.15); }
-    .menu-line-top { transform: translateY(-8px); }
-    .menu-line-bottom { transform: translateY(8px); }
-    .site-header.menu-open .menu-line-middle { transform: rotate(-45deg); }
-    .site-header.menu-open .menu-line-top, .site-header.menu-open .menu-line-bottom { transform: rotate(45deg); }
-    @media (min-width: 641px) and (max-width: 1250px) {
-      .site-header { padding: 20px 28px; flex-wrap: wrap; }
-      .header-name { top: 35px; }
-      .header-nav { margin: 10px 0 0; width: 100%; justify-content: flex-end; gap: 22px; }
-    }
-    @media (prefers-reduced-motion: reduce) { .link-track, .header-talk, .menu-icon line, .site-header .header-nav { transition: none; } }
-    .intro { position: fixed; inset: 0; z-index: 10; background: #000; opacity: 1; transition: opacity 1.9s cubic-bezier(.4, 0, .2, 1); }
-    .intro video { position: relative; z-index: 1; width: 100%; height: 100%; display: block; object-fit: contain; object-position: left center; background: transparent; }
-    .intro-background { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
-    .contact-ripple { position: absolute; pointer-events: none; }
-    .intro.leaving { opacity: 0; pointer-events: none; }
-    .skip-intro { position: absolute; z-index: 2; bottom: 28px; right: 32px; padding: 10px 0; color: #aaa; background: transparent; border: 0; font-family: inherit; font-size: 12px; line-height: 1.5; letter-spacing: .12em; cursor: pointer; }
-    .skip-intro:hover, .skip-intro:focus-visible { color: white; }
-    @media (prefers-reduced-motion: reduce) { .intro { display: none; } }
-    .composition { position: relative; width: 100%; height: 100svh; overflow: hidden; }
-    .portrait { width: 100%; height: 100%; display: block; object-fit: cover; object-position: 75% center; }
-    .portrait-frame { position: absolute; inset: 0; }
-    .portrait-frame picture { display: block; width: 100%; height: 100%; }
-    .portrait-before { position: absolute; inset: 0; will-change: clip-path; }
-    .portrait-before.done { opacity: 0; transition: opacity .45s ease; }
-    .tear-paper { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; filter: drop-shadow(3px 4px 4px #0005); }
-    .identity { position: absolute; left: 6%; top: 48%; transform: translateY(-50%); width: 43%; display: flex; flex-direction: column; align-items: center; gap: clamp(24px, 3vw, 48px); }
-    .brand-symbol { display: block; height: clamp(90px, 10vw, 150px); width: auto; }
-    h1 { margin: 0; color: #191a18; font-family: 'Cinzel Decorative', serif; font-weight: 400; font-size: clamp(40px, 5.5vw, 106px); line-height: 1.08; letter-spacing: .025em; text-align: center; }
-    h1 span { display: block; }
-    @media (max-width: 640px) {
-      .site-header { min-height: 88px; padding: max(18px, env(safe-area-inset-top)) 20px 18px; }
-      .header-logo { width: 26px; height: 44px; }
-      .header-logo img { height: 43px; }
-      .header-name { font-size: clamp(14px, 4vw, 19px); letter-spacing: .015em; }
-      .menu-toggle { display: flex; position: relative; z-index: 3; margin-right: -6px; }
-      .header-nav { display: flex; position: fixed; z-index: 2; inset: 0; width: 100%; height: 100dvh; margin: 0; padding: 130px 24px 90px; background: #c3c0b9; border: 0; border-radius: 0; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: clamp(24px, 4svh, 40px); opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(-12px); clip-path: inset(0 0 100% 0); transition: opacity .35s ease, transform .65s cubic-bezier(.22,1,.36,1), clip-path .65s cubic-bezier(.22,1,.36,1), visibility .65s; }
-      .site-header.menu-open .header-nav { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0); clip-path: inset(0 0 0 0); }
-      .header-nav .header-link { font-size: clamp(22px, 6.5vw, 32px); }
-      .header-nav .header-talk { margin-top: 8px; padding: 14px 28px; }
-      .mobile-menu-logo { display: flex; position: absolute; top: max(26px, env(safe-area-inset-top)); left: 50%; transform: translateX(-50%); align-items: center; justify-content: center; width: 52px; height: 82px; }
-      .mobile-menu-logo img { display: block; width: auto; height: 76px; filter: brightness(0); }
-      .intro video, .skip-intro { display: none; }
-      .intro video { object-fit: cover; object-position: center center; }
-      .composition { background: #bab6af url('assets/victor-hero-v6.png') left center / auto 100% no-repeat; }
-      .portrait-frame { inset: auto 0 -12px; width: 100%; height: 78%; aspect-ratio: auto; mask-image: linear-gradient(to bottom, transparent, #000 12%); }
-      .portrait { width: 100%; height: 100%; object-fit: cover; object-position: 80% center; }
-      .identity { top: 5svh; left: 8%; width: 84%; transform: none; gap: 18px; }
-      .brand-symbol { height: clamp(65px, 12svh, 100px); }
-      h1 { font-size: clamp(32px, 8.5vw, 50px); }
-    }
-  </style>
+  <script>if (new URLSearchParams(location.search).get('intro') === 'skip') document.documentElement.classList.add('skip-opening');</script>
+  <link rel="stylesheet" href="site.css">
+  <link rel="stylesheet" href="landing.css">
+  <link rel="stylesheet" href="header-refined.css">
+  <link rel="stylesheet" href="marble-cursor.css">
+  <link rel="stylesheet" href="typography.css">
 </head>
-<body>
+<body class="landing-page">
   <div class="intro" aria-label="Vídeo de abertura: escultura de mármore tocando o breu">
     <video muted autoplay playsinline preload="auto" aria-hidden="true">
       <source media="(min-width: 641px)" src="assets/abertura-desktop-c447de79.mp4" type="video/mp4">
     </video>
     <button class="skip-intro" type="button">PULAR ABERTURA ↗</button>
   </div>
-  <main id="inicio" class="composition" aria-label="Estudo visual do portfólio de Victor">
+  <main id="site-content">
+  <section id="inicio" class="composition" aria-label="Victor Siena Art">
     <header class="site-header">
       <a class="header-logo" href="#inicio" aria-label="Victor Siena Art — início"><img src="assets/victor-siena-logo-transparente-4096.png" alt="" width="34" height="58"></a>
-      <a class="header-name" href="#inicio">VICTORSIENAART</a>
+      <a class="header-name" href="#inicio">Victor Siena</a>
       <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="header-nav">
         <svg class="menu-icon" viewBox="0 0 32 32" aria-hidden="true">
           <line class="menu-line-top" x1="4" y1="16" x2="16" y2="16"/>
@@ -102,7 +35,7 @@
       </button>
       <nav class="header-nav" id="header-nav" aria-label="Navegação principal">
         <a class="mobile-menu-logo" href="#inicio" aria-label="Victor Siena Art — início"><img src="assets/victor-siena-logo-transparente-4096.png" alt="" width="45" height="76"></a>
-        <a class="header-link" href="#portfolio"><span class="link-window"><span class="link-track"><span>Portfólio</span><span aria-hidden="true">Portfólio</span></span></span></a>
+        <a class="header-link" href="portfolio.html"><span class="link-window"><span class="link-track"><span>Portfólio</span><span aria-hidden="true">Portfólio</span></span></span></a>
         <a class="header-link" href="#sobre"><span class="link-window"><span class="link-track"><span>Sobre nós</span><span aria-hidden="true">Sobre nós</span></span></span></a>
         <a class="header-link" href="#disponiveis"><span class="link-window"><span class="link-track"><span>Disponíveis</span><span aria-hidden="true">Disponíveis</span></span></span></a>
         <a class="header-link header-talk" href="#contato"><span class="link-window"><span class="link-track"><span>Let's talk</span><span aria-hidden="true">Let's talk</span></span></span></a>
@@ -113,8 +46,42 @@
         <img class="portrait" src="assets/victor-hero-v6.png" alt="Retrato de Victor sobre cimento, atravessado por um rasgo diagonal que revela sua versão em mármore com tattoos cyber pretas, cabelo natural, fundo preto e contorno fino de tinta branca na silhueta." fetchpriority="high">
       </picture>
     </div>
+  </section>
+  <section id="trabalhos" class="landing-section work-intro">
+    <div class="work-preview" id="work-preview"></div>
+  </section>
+  <section id="sobre" class="about-section">
+    <div class="marble-side" aria-hidden="true"><div class="marble-head"><img src="assets/marble-head.png" alt="" loading="lazy"><span class="eye-ring eye-ring-left"></span><span class="eye-ring eye-ring-right"></span></div></div>
+    <div class="about-copy landing-section"><h2>Victor<br><em>Siena Art.</em></h2><p class="about-lead">Eu sou Victor Siena,<br>artista e tatuador!</p><p>Meus projetos são feitos no freehand, desenvolvidos para a anatomia de cada cliente. Cada traço é pensado para ter a melhor adaptação e encaixe no seu corpo.</p><p>Se você quer uma tatuagem exclusiva, feita para o seu corpo, me chama que te explico tudo.</p></div>
+  </section>
+  <section id="disponiveis" class="landing-section available-section">
+    
+    <div class="section-heading"><h2>O próximo<br><em>traço.</em></h2><div><p>Cyber Armor • 100% freehand. Projetos desenvolvidos para cada anatomia, com adaptação e encaixe pensados para o seu corpo.</p></div></div>
+    <div class="concept-grid">
+      <button class="concept-card" type="button" data-idea="Quero conversar sobre um conceito de cyber para ombro e pescoço."><div class="concept-image"><img src="assets/portfolio/4444444.webp" alt="Estudo de composição em mármore com traços pretos" loading="lazy"></div><span>Cyber / Composição <b>↗</b></span></button>
+      <button class="concept-card concept-type" type="button" data-idea="Quero criar um projeto autoral do zero."><div class="concept-symbol" aria-hidden="true">✳</div><span>Um projeto seu <b>↗</b></span><p>Uma tatuagem exclusiva.<br>Feita para o seu corpo.</p></button>
+    </div>
+    <p class="section-note">Conceitos e referências de estilo. Consulte a disponibilidade de cada desenho.</p>
+  </section>
+  <section id="servicos" class="landing-section services-section">
+    <h2>Feito para<br><em>o seu corpo.</em></h2>
+    <div class="service-list">
+      <button type="button" data-idea="Quero desenvolver uma tatuagem autoral."><h3>100% freehand</h3><p>Projeto desenvolvido direto no corpo, para acompanhar sua anatomia e encontrar o melhor encaixe.</p><b>↗</b></button>
+      <button type="button" data-idea="Tenho interesse em um conceito disponível."><h3>Cyber Armor</h3><p>Traços que acompanham o corpo. Uma direção para desenvolver sua próxima tatuagem exclusiva.</p><b>↗</b></button>
+      <button type="button" data-idea="Quero conversar sobre um projeto de composição corporal."><h3>Projetos exclusivos</h3><p>Da sua ideia ao resultado, uma composição desenvolvida para a sua anatomia.</p><b>↗</b></button>
+    </div>
+  </section>
+  <section id="contato" class="landing-section contact-section">
+    
+    <h2>O que você<br>quer <em>criar?</em></h2><div class="contact-bottom"><p>Quer um upgrade desse também?<br>Me conta sua ideia que te explico tudo!</p><button class="whatsapp-marble-button" type="button" data-whatsapp aria-label="Chamar Victor no WhatsApp"><img src="assets/whatsapp-marble.png" alt="" aria-hidden="true"><span>Chamar no<br>WhatsApp</span></button></div>
+  </section>
+  <footer class="landing-footer"><a href="#inicio">VICTORSIENAART</a><div><a href="portfolio.html">Portfólio ↗</a><a href="#disponiveis">Disponíveis</a><a href="#sobre">Sobre</a><a href="#servicos">Serviços</a><a href="#contato">Agendamentos</a></div><span>Cyber Armor • 100% freehand.</span></footer>
   </main>
+  <dialog class="booking-dialog" aria-labelledby="booking-title"><button type="button" class="booking-close" aria-label="Fechar formulário">×</button><div class="booking-inner"><span class="section-eyebrow">Vamos desenhar essa ideia</span><h2 id="booking-title">Seu próximo<br>projeto.</h2><form id="booking-form"><label>Seu nome<input name="name" autocomplete="name" required maxlength="100"></label><label>Telefone<input name="phone" type="tel" autocomplete="tel" required maxlength="30"></label><div class="form-pair"><label>Região do corpo<input name="placement" placeholder="Ex.: antebraço" maxlength="100"></label><label>Tamanho aproximado<input name="size" placeholder="Ex.: 15 cm" maxlength="60"></label></div><label>Sua ideia<textarea name="idea" rows="4" required maxlength="3000" placeholder="Conte como você imagina sua tatuagem"></textarea></label><label>Link de referências <span>(opcional)</span><input name="reference" type="url" placeholder="https://…" maxlength="1500"></label><p class="form-note">As fotos de referência podem ser anexadas na conversa do WhatsApp.</p><button type="submit" class="contact-button booking-submit">Preparar pedido ↗</button><p class="booking-status" role="status"></p></form></div></dialog>
   <script src="intro.js"></script>
   <script src="header.js"></script>
+  <script src="portfolio-data.js"></script>
+  <script src="site-config.js"></script>
+  <script src="landing.js"></script>
 </body>
 </html>

@@ -2,6 +2,12 @@
   const overlay = document.querySelector('.intro');
   const main = document.querySelector('main');
   const video = overlay.querySelector('video');
+  if (new URLSearchParams(location.search).get('intro') === 'skip') {
+    video.pause();
+    overlay.remove();
+    main.inert = false;
+    return;
+  }
   if (matchMedia('(max-width: 640px)').matches) {
     video.pause();
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) {

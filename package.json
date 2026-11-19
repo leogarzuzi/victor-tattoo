@@ -1,1 +1,1 @@
-{"name":"victor-portfolio","private":true,"scripts":{"dev":"node server.cjs","start":"node server.cjs"}}
+{"name":"victor-portfolio","private":true,"scripts":{"dev":"node server.cjs","start":"node server.cjs","build":"node scripts/build-static.cjs"}}

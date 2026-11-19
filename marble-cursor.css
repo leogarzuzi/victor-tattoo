@@ -1,0 +1,9 @@
+@media (hover:hover) and (pointer:fine) {
+ html,body,a,button,[role="button"],.work-cover,.concept-card,.viewer-close,.favorite-toggle { cursor:url('assets/marble-cursor-v2.png') 5 3,auto; }
+ input,textarea,[contenteditable="true"] { cursor:text; }
+ button:disabled { cursor:not-allowed; }
+}
+@media (hover:hover) and (pointer:fine) {
+ .landing-page button,.landing-page a,.portfolio-page button,.portfolio-page a { cursor:url('assets/marble-cursor-v2.png') 5 3,pointer; }
+ .landing-page button:disabled,.portfolio-page button:disabled { cursor:not-allowed; }
+}

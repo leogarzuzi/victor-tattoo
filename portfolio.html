@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<script src="page-transition.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#deddd8">
+<meta name="description" content="Trabalhos de Victor Siena Art. Explore tatuagens autorais, detalhes e o processo de cada projeto.">
+<title>Portfólio — Victor Siena Art</title>
+<link rel="preload" href="assets/fonts/CinzelDecorative-Regular.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="portfolio.css">
+  <link rel="stylesheet" href="header-refined.css">
+  <link rel="stylesheet" href="marble-cursor.css">
+  <link rel="stylesheet" href="typography.css">
+</head>
+<body class="portfolio-page">
+    <header class="site-header">
+      <a class="header-logo" href="index.html?intro=skip#inicio" aria-label="Victor Siena Art — início"><img src="assets/victor-siena-logo-transparente-4096.png" alt="" width="34" height="58"></a>
+      <a class="header-name" href="index.html?intro=skip#inicio">Victor Siena</a>
+      <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="header-nav">
+        <svg class="menu-icon" viewBox="0 0 32 32" aria-hidden="true">
+          <line class="menu-line-top" x1="4" y1="16" x2="16" y2="16"/>
+          <line class="menu-line-middle" x1="4" y1="16" x2="28" y2="16"/>
+          <line class="menu-line-bottom" x1="16" y1="16" x2="28" y2="16"/>
+        </svg>
+      </button>
+      <nav class="header-nav" id="header-nav" aria-label="Navegação principal">
+        <a class="mobile-menu-logo" href="index.html?intro=skip#inicio" aria-label="Victor Siena Art — início"><img src="assets/victor-siena-logo-transparente-4096.png" alt="" width="45" height="76"></a>
+        <a class="header-link" href="portfolio.html" aria-current="page"><span class="link-window"><span class="link-track"><span>Portfólio</span><span aria-hidden="true">Portfólio</span></span></span></a>
+        <a class="header-link" href="index.html?intro=skip#sobre"><span class="link-window"><span class="link-track"><span>Sobre nós</span><span aria-hidden="true">Sobre nós</span></span></span></a>
+        <a class="header-link" href="index.html?intro=skip#disponiveis"><span class="link-window"><span class="link-track"><span>Disponíveis</span><span aria-hidden="true">Disponíveis</span></span></span></a>
+        <a class="header-link header-talk" href="index.html?intro=skip#contato"><span class="link-window"><span class="link-track"><span>Let's talk</span><span aria-hidden="true">Let's talk</span></span></span></a>
+      </nav>
+    </header>
+<main id="portfolio">
+  <section class="collection" aria-label="Portfólio de tatuagens">
+    <div class="gallery-stage">
+      <div class="gallery-track" aria-label="Trabalhos de tatuagem"></div>
+      <div class="gallery-footer"><span class="scroll-instruction">Role para explorar</span><div class="gallery-progress" aria-hidden="true"><span></span></div><span class="gallery-position">01</span></div>
+    </div>
+  </section>
+  <noscript><p>Ative o JavaScript para explorar os trabalhos e suas fotografias.</p></noscript>
+</main>
+<dialog class="work-viewer" aria-label="Fotos e vídeos do trabalho">
+  <div class="viewer-top"><p class="viewer-title"></p><button class="viewer-close" type="button" aria-label="Fechar trabalho"><span></span><span></span></button></div>
+  <div class="viewer-slides" tabindex="0" aria-label="Galeria do trabalho"></div>
+  <div class="viewer-bottom"><button class="viewer-prev" type="button" aria-label="Mídia anterior"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 5-7 7 7 7"/></svg></button><p class="viewer-counter" aria-live="polite"></p><button class="viewer-next" type="button" aria-label="Próxima mídia"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m10 5 7 7-7 7"/></svg></button></div>
+</dialog>
+<script src="header.js"></script>
+<script src="portfolio-data.js"></script>
+<script src="reference-sheet.js"></script>
+<script src="portfolio.js"></script>
+</body>
+</html>

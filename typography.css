@@ -1,0 +1,5 @@
+/* Match the system font stack used by ruitat.info. */
+:root { --font-ui:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,"PingFang SC","Hiragino Sans","Malgun Gothic",sans-serif; --font-brand:"Cinzel Decorative",serif; }
+body { font-family:var(--font-ui); -webkit-font-smoothing:antialiased; }
+h1,h2,h3,h4,h5,h6 { font-family:var(--font-ui); }
+.site-header .header-name,.about-copy h2,.landing-footer>a { font-family:var(--font-brand); }
