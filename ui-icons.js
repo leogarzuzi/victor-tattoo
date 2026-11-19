@@ -1,0 +1,2 @@
+window.SITE_ARROW = '<svg class="ui-arrow" viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="m5 5 9 9-9 9m8-18 9 9-9 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+window.SITE_ARROW_DOWN = '<svg class="ui-arrow ui-arrow-down" viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="m5 5 9 9-9 9m8-18 9 9-9 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';

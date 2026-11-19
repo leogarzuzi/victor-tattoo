@@ -50,7 +50,7 @@
   let opener;
   const phone = String(window.VICTOR_CONFIG?.whatsapp || '').replace(/\D/g, '');
   const submit = form.querySelector('[type="submit"]');
-  submit.textContent = phone ? 'Continuar no WhatsApp ↗' : 'Copiar meu pedido ↗';
+  submit.innerHTML = (phone ? 'Continuar no WhatsApp ' : 'Copiar meu pedido ') + window.SITE_ARROW;
   function openBooking(button, idea) {
     opener = button;
     if (idea) form.elements.idea.value = idea;

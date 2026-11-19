@@ -37,7 +37,7 @@
   collection.prepend(favoritesHeading);
   const actions = document.createElement('div');
   actions.className = 'selection-actions'; actions.hidden = true;
-  actions.innerHTML = '<button type="button" class="copy-selection">Copiar link ↗</button><button type="button" class="download-selection">Baixar seleção ↓</button>';
+  actions.innerHTML = `<button type="button" class="copy-selection">Copiar link ${window.SITE_ARROW}</button><button type="button" class="download-selection">Baixar seleção ${window.SITE_ARROW_DOWN}</button>`;
   collection.append(actions);
   actions.querySelector('.copy-selection').addEventListener('click', async event => {
     const button = event.currentTarget;
@@ -46,7 +46,7 @@
     try {
       await navigator.clipboard.writeText(url.href);
       button.textContent = 'Link copiado ✓';
-      setTimeout(() => { button.textContent = 'Copiar link ↗'; }, 2000);
+      setTimeout(() => { button.innerHTML = 'Copiar link ' + window.SITE_ARROW; }, 2000);
     } catch { window.prompt('Copie o link da seleção:', url.href); }
   });
   actions.querySelector('.download-selection').addEventListener('click', async event => {
@@ -54,7 +54,7 @@
     button.disabled = true; button.textContent = 'Preparando…';
     try { await window.downloadReferenceSheet(selectedWorks()); }
     catch { status.textContent = 'Não foi possível baixar a seleção. Tente novamente.'; }
-    finally { button.disabled = false; button.textContent = 'Baixar seleção ↓'; }
+    finally { button.disabled = false; button.innerHTML = 'Baixar seleção ' + window.SITE_ARROW_DOWN; }
   });
   const empty = document.createElement('p');
   empty.className = 'favorites-empty'; empty.textContent = 'Seus trabalhos favoritos aparecem aqui. Toque no coração de uma foto para salvar.';

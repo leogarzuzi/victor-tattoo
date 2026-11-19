@@ -1,0 +1,5 @@
+.ui-arrow { display:inline-block; width:22px; height:22px; flex:none; vertical-align:middle; }
+.ui-arrow-down { transform:rotate(90deg); }
+.skip-intro .ui-arrow,.landing-footer .ui-arrow,.selection-actions .ui-arrow { width:16px; height:16px; margin-left:6px; }
+.service-list b .ui-arrow,.concept-card b .ui-arrow { width:25px; height:25px; }
+.selection-actions button { display:inline-flex; align-items:center; gap:7px; }
