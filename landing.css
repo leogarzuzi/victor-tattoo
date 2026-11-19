@@ -3,7 +3,7 @@ html { scroll-behavior:smooth; scroll-padding-top:110px; }
 body.landing-page { overflow-x:hidden; overflow-y:auto; background:var(--cement); color:var(--ink); }
 .landing-page main { width:100%; }
 .landing-page .site-header { position:fixed; z-index:30; transition:background .4s; }
-.landing-page .site-header.is-scrolled { background:var(--cement); }
+.landing-page .site-header.is-scrolled { background:transparent; }
 .landing-page .composition { isolation:isolate; }
 .hero-scroll { position:absolute; bottom:30px; left:40px; color:var(--ink); text-decoration:none; display:flex; gap:45px; align-items:center; font-size:12px; z-index:1; }
 .hero-scroll span { font-family:serif; font-size:28px; }
@@ -128,17 +128,40 @@ body.booking-open { overflow:hidden; }
 @media(max-width:640px) { .about-section .eye-ring { width:11px; height:11px; } .about-section .eye-ring-right { width:9px; height:9px; } }
 /* Stronger ink above the marble portrait. */
 .about-section .about-copy h2,.about-section .about-copy h2 em,.about-section .about-copy p { color:#000; opacity:1; text-shadow:none; }
-.about-section .about-copy p { font-weight:700; }
-.whatsapp-marble-button { position:relative; display:block; flex:none; width:min(360px,100%); aspect-ratio:3.3/1; padding:0; border:0; background:transparent; color:#080908; cursor:pointer; transition:transform .3s ease,filter .3s ease; }
-.whatsapp-marble-button img { display:block; width:100%; height:100%; object-fit:contain; pointer-events:none; }
-.whatsapp-marble-button>span { position:absolute; left:34%; right:10%; top:50%; transform:translateY(-50%); text-align:center; font-size:16px; line-height:1.45; font-weight:700; letter-spacing:.015em; }
-.whatsapp-marble-button:hover { transform:translateY(-3px); filter:drop-shadow(0 8px 10px #0002); }
-.whatsapp-marble-button:active { transform:translateY(0); }
-@media(max-width:640px) { .whatsapp-marble-button { width:100%; max-width:360px; } .whatsapp-marble-button>span { font-size:15px; } }
-@media(prefers-reduced-motion:reduce) { .whatsapp-marble-button { transition:none; } }
+.about-section .about-copy p { font-weight:400; font-synthesis:none; }
 .about-section { border-top:0; }
 .about-section .about-copy p { font-weight:400; font-size:18px; line-height:1.85; }
 .about-section .about-copy .about-lead { font-size:clamp(22px,2vw,30px); font-weight:400; }
 /* Dissolve the lower edge of the portrait into the cement of the next section. */
 .landing-page .composition::after { content:''; position:absolute; inset:auto 0 0; height:clamp(75px,15svh,170px); background:linear-gradient(to bottom,transparent,var(--cement)); pointer-events:none; z-index:2; }
-@media(max-width:640px) { .about-section .about-copy p { font-size:17px; line-height:1.8; } .about-section .about-copy .about-lead { font-size:23px; } .about-section .about-copy { padding-top:65px; } }
+@media(max-width:640px) { .about-section .about-copy p { font-size:20px; line-height:1.7; font-weight:400; } .about-section .about-copy .about-lead { font-size:25px; font-weight:400; } .about-section .about-copy { padding-top:65px; } }
+/* A small lift above neighboring photographs, without changing the grid. */
+.work-intro .work-preview { position:relative; overflow:visible; }
+.work-intro .work-preview>a { z-index:0; transform-origin:center; transition:transform 1.15s cubic-bezier(.25,.1,.25,1),box-shadow 1.15s ease; }
+@media(hover:hover) and (pointer:fine) {
+ .work-intro .work-preview>a:hover,.work-intro .work-preview>a:focus-visible { z-index:3; transform:translateY(-4px) scale(1.035); box-shadow:0 15px 45px #0004; }
+ .work-intro .work-preview>a:hover img { transform:scale(1.02); }
+}
+@media(hover:none),(pointer:coarse) {
+ .work-intro .work-preview>a { transform:translateY(var(--photo-lift,0px)) scale(var(--photo-scale,1)); transition:transform .16s ease-out,box-shadow .4s ease; }
+ .work-intro .work-preview>a.is-scroll-highlight { z-index:2; box-shadow:0 10px 24px #0003; }
+ .work-intro .work-preview>a:hover img { transform:none; }
+}
+@media(prefers-reduced-motion:reduce) {
+ .work-intro .work-preview>a,.work-intro .work-preview>a:hover,.work-intro .work-preview>a:focus-visible,.work-intro .work-preview>a:hover img { transform:none; transition:none; box-shadow:none; }
+}
+/* Lift the entire card over its neighbors, including its edges and caption. */
+.work-intro { position:relative; z-index:3; overflow:visible; }
+.work-intro .work-preview { isolation:isolate; }
+.work-intro .work-preview>a img,.work-intro .work-preview>a:hover img { transform:none; }
+@media(hover:hover) and (pointer:fine) {
+ .work-intro .work-preview>a:first-child { transform-origin:left center; }
+ .work-intro .work-preview>a:last-child { transform-origin:right center; }
+ .work-intro .work-preview>a:hover,.work-intro .work-preview>a:focus-visible { z-index:10; transform:translateY(-10px) scale(1.12); box-shadow:0 24px 65px #0008,0 0 0 1px #ffffff70; }
+}
+@media(hover:none),(pointer:coarse) {
+ .work-intro .work-preview>a.is-scroll-highlight { z-index:10; box-shadow:0 18px 40px #0007,0 0 0 1px #ffffff60; }
+}
+@media(prefers-reduced-motion:reduce) {
+ .work-intro .work-preview>a:hover,.work-intro .work-preview>a:focus-visible { transform:none; }
+}

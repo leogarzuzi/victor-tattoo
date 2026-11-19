@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#b8b7b3">
-  <meta name="description" content="Victor — estudo visual de pele, mármore e blackwork.">
-  <title>Victor — Pele & Mármore</title>
+  <meta name="description" content="Victor Siena — tatuador de cyber armor e blackwork autoral, 100% freehand. Veja o portfólio e agende sua tatuagem.">
+  <title>Victor Siena</title>
   <script>if (new URLSearchParams(location.search).get('intro') === 'skip') document.documentElement.classList.add('skip-opening');</script>
   <link rel="stylesheet" href="site.css">
   <link rel="stylesheet" href="landing.css">
@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="marble-cursor.css">
   <link rel="stylesheet" href="typography.css">
   <link rel="stylesheet" href="ui-icons.css">
+  <link rel="stylesheet" href="landing-refine.css">
 </head>
 <body class="landing-page">
   <div class="intro" aria-label="Vídeo de abertura: escultura de mármore tocando o breu">
@@ -39,7 +40,7 @@
         <a class="header-link" href="portfolio.html"><span class="link-window"><span class="link-track"><span>Portfólio</span><span aria-hidden="true">Portfólio</span></span></span></a>
         <a class="header-link" href="#sobre"><span class="link-window"><span class="link-track"><span>Sobre nós</span><span aria-hidden="true">Sobre nós</span></span></span></a>
         <a class="header-link" href="#disponiveis"><span class="link-window"><span class="link-track"><span>Disponíveis</span><span aria-hidden="true">Disponíveis</span></span></span></a>
-        <a class="header-link header-talk" href="#contato"><span class="link-window"><span class="link-track"><span>Let's talk</span><span aria-hidden="true">Let's talk</span></span></span></a>
+        <a class="header-link header-talk" href="#agendar" data-booking><span class="link-window"><span class="link-track"><span>Agendar</span><span aria-hidden="true">Agendar</span></span></span></a>
       </nav>
     </header>
     <div class="portrait-frame">
@@ -47,22 +48,38 @@
         <img class="portrait" src="assets/victor-hero-v6.png" alt="Retrato de Victor sobre cimento, atravessado por um rasgo diagonal que revela sua versão em mármore com tattoos cyber pretas, cabelo natural, fundo preto e contorno fino de tinta branca na silhueta." fetchpriority="high">
       </picture>
     </div>
+    <div class="hero-copy">
+      <p class="cyber-label">Tatuador · Cyber Armor · 100% freehand</p>
+      <h1>Cyber armor<br><em>no seu corpo.</em></h1>
+      <p class="hero-lead">Blackwork autoral desenhado à mão livre, direto na sua anatomia.</p>
+      <div class="hero-actions">
+        <a class="cyber-button" href="#agendar" data-booking>Agendar tatuagem <svg class="ui-arrow" viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="m5 5 9 9-9 9m8-18 9 9-9 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a class="cyber-link" href="#trabalhos">Ver trabalhos</a>
+      </div>
+    </div>
+  </section>
+  <section id="trabalhos" class="work-intro">
+    <div class="work-head landing-section"><p class="cyber-label">Trabalhos recentes</p><a class="cyber-link" href="portfolio.html">Ver portfólio completo <svg class="ui-arrow" viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="m5 5 9 9-9 9m8-18 9 9-9 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+    <div class="work-preview" id="work-preview"></div>
   </section>
   <section id="sobre" class="about-section">
     <div class="marble-side" aria-hidden="true"><div class="marble-head"><img src="assets/marble-head.png" alt="" loading="lazy"><span class="eye-ring eye-ring-left"></span><span class="eye-ring eye-ring-right"></span></div></div>
     <div class="about-copy landing-section"><h2>Victor<br><em>Siena Art.</em></h2><p class="about-lead">Eu sou Victor Siena,<br>artista e tatuador!</p><p>Meus projetos são feitos no freehand, desenvolvidos para a anatomia de cada cliente. Cada traço é pensado para ter a melhor adaptação e encaixe no seu corpo.</p><p>Se você quer uma tatuagem exclusiva, feita para o seu corpo, me chama que te explico tudo.</p></div>
   </section>
-  <section id="trabalhos" class="landing-section work-intro">
-    <div class="work-preview" id="work-preview"></div>
-  </section>
   <section id="disponiveis" class="landing-section available-section">
-    
-    <div class="section-heading"><h2>O próximo<br><em>traço.</em></h2><div><p>Cyber Armor • 100% freehand. Projetos desenvolvidos para cada anatomia, com adaptação e encaixe pensados para o seu corpo.</p></div></div>
-    <div class="concept-grid">
-      <button class="concept-card" type="button" data-idea="Quero conversar sobre um conceito de cyber para ombro e pescoço."><div class="concept-image"><img src="assets/portfolio/4444444.webp" alt="Estudo de composição em mármore com traços pretos" loading="lazy"></div><span>Cyber / Composição <b><svg class="ui-arrow" viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="m5 5 9 9-9 9m8-18 9 9-9 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></b></span></button>
-      <button class="concept-card concept-type" type="button" data-idea="Quero criar um projeto autoral do zero."><div class="concept-symbol" aria-hidden="true">✳</div><span>Um projeto seu <b><svg class="ui-arrow" viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="m5 5 9 9-9 9m8-18 9 9-9 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></b></span><p>Uma tatuagem exclusiva.<br>Feita para o seu corpo.</p></button>
+    <div class="section-heading"><h2>O próximo<br><em>traço.</em></h2><div><p>Desenhos disponíveis para tatuar. Cada um é adaptado à sua anatomia, 100% freehand.</p></div></div>
+    <div class="avail-carousel" aria-roledescription="carrossel" aria-label="Desenhos disponíveis para tatuar">
+      <ul class="avail-track">
+        <li class="avail-item"><button class="avail-card" type="button" data-idea="Tenho interesse no desenho disponível: Estudo Cyber Armor."><span class="avail-image"><img src="assets/disponiveis/estudo-marmore.jpg" alt="Estátua de mármore com traços cyber pretos no ombro, peito e braço" loading="lazy" decoding="async" draggable="false"></span><span class="avail-caption"><strong>Estudo Cyber Armor</strong><small>Novos desenhos em breve</small><svg class="ui-arrow" viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="m5 5 9 9-9 9m8-18 9 9-9 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></li>
+        <li class="avail-item"><button class="avail-card" type="button" data-idea="Tenho interesse no desenho disponível: Flash · Olhos."><span class="avail-image"><img src="assets/disponiveis/flash-olhos.jpg" alt="Folha de flash tattoos com quatro olhos em traço cyber" loading="lazy" decoding="async" draggable="false"></span><span class="avail-caption"><strong>Flash · Olhos</strong><small>Folha de flash disponível</small><svg class="ui-arrow" viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="m5 5 9 9-9 9m8-18 9 9-9 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></li>
+        <li class="avail-item"><button class="avail-card" type="button" data-idea="Tenho interesse no desenho disponível: Flash · Rostos."><span class="avail-image"><img src="assets/disponiveis/flash-rostos.jpg" alt="Folha de flash tattoos com dois rostos emoldurados por traços cyber" loading="lazy" decoding="async" draggable="false"></span><span class="avail-caption"><strong>Flash · Rostos</strong><small>Mínimo 12 cm · R$ 600</small><svg class="ui-arrow" viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="m5 5 9 9-9 9m8-18 9 9-9 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></li>
+        <li class="avail-item"><button class="avail-card" type="button" data-idea="Tenho interesse no desenho disponível: Costas · Cyber Armor."><span class="avail-image"><img src="assets/disponiveis/costas-cyber.jpg" alt="Desenho de costas com armadura cyber em traços pretos do ombro às pernas" loading="lazy" decoding="async" draggable="false"></span><span class="avail-caption"><strong>Costas · Cyber Armor</strong><small>Projeto de corpo inteiro</small><svg class="ui-arrow" viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="m5 5 9 9-9 9m8-18 9 9-9 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></li>
+        <li class="avail-item"><button class="avail-card" type="button" data-idea="Tenho interesse no desenho disponível: Tubarão."><span class="avail-image"><img src="assets/disponiveis/tubarao.jpg" alt="Tubarão em pontilhismo com nadadeiras em traço cyber" loading="lazy" decoding="async" draggable="false"></span><span class="avail-caption"><strong>Tubarão</strong><small>A partir de 10 cm · R$ 480</small><svg class="ui-arrow" viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="m5 5 9 9-9 9m8-18 9 9-9 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></li>
+        <li class="avail-item"><button class="avail-card" type="button" data-idea="Tenho interesse no desenho disponível: Perna · Flores."><span class="avail-image"><img src="assets/disponiveis/perna-flores.jpg" alt="Projeto para perna com flores e armadura cyber em blackwork" loading="lazy" decoding="async" draggable="false"></span><span class="avail-caption"><strong>Perna · Flores</strong><small>Projeto disponível</small><svg class="ui-arrow" viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="m5 5 9 9-9 9m8-18 9 9-9 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></li>
+        <li class="avail-item"><button class="avail-card avail-own" type="button" data-idea="Quero criar um projeto autoral do zero."><span class="avail-image"><span class="avail-symbol" aria-hidden="true">✳</span><span class="avail-own-text">Uma tatuagem exclusiva.<br>Feita para o seu corpo.</span></span><span class="avail-caption"><strong>Um projeto seu</strong><small>Do zero, 100% freehand</small><svg class="ui-arrow" viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="m5 5 9 9-9 9m8-18 9 9-9 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></li>
+      </ul>
     </div>
-    <p class="section-note">Conceitos e referências de estilo. Consulte a disponibilidade de cada desenho.</p>
+    <p class="section-note">Segure para pausar e arraste para os lados. Toque em um desenho para reservar.</p>
   </section>
   <section id="servicos" class="landing-section services-section">
     <h2>Feito para<br><em>o seu corpo.</em></h2>
@@ -73,17 +90,34 @@
     </div>
   </section>
   <section id="contato" class="landing-section contact-section">
-    
-    <h2>O que você<br>quer <em>criar?</em></h2><div class="contact-bottom"><p>Quer um upgrade desse também?<br>Me conta sua ideia que te explico tudo!</p><button class="whatsapp-marble-button" type="button" data-whatsapp aria-label="Chamar Victor no WhatsApp"><img src="assets/whatsapp-marble.png" alt="" aria-hidden="true"><span>Chamar no<br>WhatsApp</span></button></div>
+    <h2>O que você<br>quer <em>criar?</em></h2><div class="contact-bottom"><div class="contact-text"><p>Quer um upgrade desse também?<br>Me conta sua ideia que te explico tudo!</p><button class="cyber-button" type="button" data-booking>Montar meu pedido <svg class="ui-arrow" viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="m5 5 9 9-9 9m8-18 9 9-9 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div>
   </section>
-  <footer class="landing-footer"><a href="#inicio">VICTORSIENAART</a><div><a href="portfolio.html">Portfólio <svg class="ui-arrow" viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="m5 5 9 9-9 9m8-18 9 9-9 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a href="#disponiveis">Disponíveis</a><a href="#sobre">Sobre</a><a href="#servicos">Serviços</a><a href="#contato">Agendamentos</a></div><span>Cyber Armor • 100% freehand.</span></footer>
+  <footer class="landing-footer"><a href="#inicio">Victor Siena</a><div><a href="portfolio.html">Portfólio <svg class="ui-arrow" viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="m5 5 9 9-9 9m8-18 9 9-9 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a href="#disponiveis">Disponíveis</a><a href="#sobre">Sobre</a><a href="#servicos">Serviços</a><a href="#contato">Agendamentos</a></div><span>Cyber Armor • 100% freehand.</span></footer>
   </main>
-  <dialog class="booking-dialog" aria-labelledby="booking-title"><button type="button" class="booking-close" aria-label="Fechar formulário">×</button><div class="booking-inner"><span class="section-eyebrow">Vamos desenhar essa ideia</span><h2 id="booking-title">Seu próximo<br>projeto.</h2><form id="booking-form"><label>Seu nome<input name="name" autocomplete="name" required maxlength="100"></label><label>Telefone<input name="phone" type="tel" autocomplete="tel" required maxlength="30"></label><div class="form-pair"><label>Região do corpo<input name="placement" placeholder="Ex.: antebraço" maxlength="100"></label><label>Tamanho aproximado<input name="size" placeholder="Ex.: 15 cm" maxlength="60"></label></div><label>Sua ideia<textarea name="idea" rows="4" required maxlength="3000" placeholder="Conte como você imagina sua tatuagem"></textarea></label><label>Link de referências <span>(opcional)</span><input name="reference" type="url" placeholder="https://…" maxlength="1500"></label><p class="form-note">As fotos de referência podem ser anexadas na conversa do WhatsApp.</p><button type="submit" class="contact-button booking-submit">Preparar pedido <svg class="ui-arrow" viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="m5 5 9 9-9 9m8-18 9 9-9 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><p class="booking-status" role="status"></p></form></div></dialog>
+  <dialog class="booking-dialog" aria-labelledby="booking-title">
+    <div class="card-header"><span class="card-title"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m4 17 6-5-6-5M12 19h8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Novo projeto</span><span class="card-dots" aria-hidden="true"><span></span><span></span><span></span></span><button type="button" class="booking-close" aria-label="Fechar formulário">×</button></div>
+    <div class="booking-inner">
+      <h2 id="booking-title">Seu próximo<br><em>projeto.</em></h2>
+      <p class="booking-intro">Conta sua ideia. A mensagem chega pronta no WhatsApp do Victor.</p>
+      <form id="booking-form">
+        <div class="form-group"><input id="f-name" name="name" autocomplete="name" required maxlength="100" placeholder=" "><label class="form-label" for="f-name" data-text="Seu nome">Seu nome</label></div>
+        <div class="form-group"><input id="f-phone" name="phone" type="tel" autocomplete="tel" required maxlength="30" placeholder="(16) 99999-9999"><label class="form-label" for="f-phone" data-text="Telefone">Telefone</label></div>
+        <div class="form-pair"><div class="form-group"><input id="f-placement" name="placement" maxlength="100" placeholder="Ex.: antebraço"><label class="form-label" for="f-placement" data-text="Região do corpo">Região do corpo</label></div><div class="form-group"><input id="f-size" name="size" maxlength="60" placeholder="Ex.: 15 cm"><label class="form-label" for="f-size" data-text="Tamanho">Tamanho</label></div></div>
+        <div class="form-group"><textarea id="f-idea" name="idea" rows="3" required maxlength="3000" placeholder="Como você imagina sua tatuagem"></textarea><label class="form-label" for="f-idea" data-text="Sua ideia">Sua ideia</label></div>
+        <div class="form-group"><input id="f-reference" name="reference" type="url" maxlength="1500" placeholder="https://…"><label class="form-label" for="f-reference" data-text="Link de referências (opcional)">Link de referências (opcional)</label></div>
+        <p class="form-note">As fotos de referência podem ser anexadas na conversa do WhatsApp.</p>
+        <button type="submit" class="submit-btn booking-submit" data-text="Enviar pedido"><span class="btn-text">Enviar pedido</span></button>
+        <p class="booking-status" role="status"></p>
+      </form>
+    </div>
+  </dialog>
   <script src="intro.js"></script>
   <script src="header.js"></script>
   <script src="ui-icons.js"></script>
   <script src="portfolio-data.js"></script>
   <script src="site-config.js"></script>
+  <script src="available-carousel.js"></script>
   <script src="landing.js"></script>
+  <script src="whatsapp-float.js"></script>
 </body>
 </html>

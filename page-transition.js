@@ -10,6 +10,8 @@
   root.classList.add('page-covered');
   const reveal = () => requestAnimationFrame(() => requestAnimationFrame(() => root.classList.remove('page-covered')));
   addEventListener('pageshow', () => { changing = false; reveal(); });
+  // Reveal as soon as the markup is ready instead of waiting for every image and video.
+  document.addEventListener('DOMContentLoaded', reveal, { once: true });
   const wait = () => new Promise(resolve => setTimeout(resolve, reduced.matches ? 0 : 570));
   window.fadePageChange = async change => {
     if (changing) return;

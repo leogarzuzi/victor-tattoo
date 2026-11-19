@@ -1,5 +1,9 @@
-/* Match the system font stack used by ruitat.info. */
-:root { --font-ui:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,"PingFang SC","Hiragino Sans","Malgun Gothic",sans-serif; --font-brand:"Cinzel Decorative",serif; }
-body { font-family:var(--font-ui); -webkit-font-smoothing:antialiased; }
-h1,h2,h3,h4,h5,h6 { font-family:var(--font-ui); }
-.site-header .header-name,.about-copy h2,.landing-footer>a { font-family:var(--font-brand); }
+/* Archivo (OFL) carries every text on the site; Cinzel Decorative is reserved for the name "Victor Siena". */
+@font-face { font-family:'Archivo'; src:url('assets/fonts/archivo/Archivo-Variable.ttf') format('truetype'); font-weight:100 900; font-stretch:62% 125%; font-style:normal; font-display:swap; }
+:root { --font-ui:'Archivo',Arial,sans-serif; --font-title:'Archivo',Arial,sans-serif; --font-brand:'Cinzel Decorative',serif; }
+body { font-family:var(--font-ui); font-stretch:100%; -webkit-font-smoothing:antialiased; }
+h1,h2,h3,h4,h5,h6,.photo-word { font-family:var(--font-title); font-weight:800; font-stretch:125%; text-transform:uppercase; letter-spacing:-.02em; }
+h3 { font-weight:700; letter-spacing:.01em; }
+.site-header .header-name,.about-copy h2,.landing-footer>a { font-family:var(--font-brand); font-stretch:normal; text-transform:none; letter-spacing:normal; }
+.about-copy h2 { font-weight:400; }
+.portfolio-page h1 { font-weight:800; }

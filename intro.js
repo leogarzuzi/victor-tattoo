@@ -25,11 +25,35 @@
     });
     return;
   }
+  // The source video softens the border between the grey studio and the black void.
+  // A pure black panel sits exactly on that border so the split reads razor sharp,
+  // and lifts at the moment the hand touches the void and everything starts to merge.
+  const SPLIT_X = 1362 / 1920;
+  const TOUCH_TIME = 1.0;
+  const edge = document.createElement('div');
+  edge.className = 'intro-edge';
+  edge.setAttribute('aria-hidden', 'true');
+  overlay.append(edge);
+  function placeEdge() {
+    const vw = video.videoWidth || 1920, vh = video.videoHeight || 1080;
+    const box = video.getBoundingClientRect();
+    const cover = getComputedStyle(video).objectFit === 'cover';
+    const scale = (cover ? Math.max : Math.min)(box.width / vw, box.height / vh);
+    edge.style.left = `${Math.round(box.left + vw * SPLIT_X * scale)}px`;
+  }
+  function releaseEdge() {
+    if (video.currentTime >= TOUCH_TIME) edge.classList.add('released');
+  }
+  placeEdge();
+  addEventListener('resize', placeEdge);
+  video.addEventListener('loadedmetadata', placeEdge);
+  video.addEventListener('timeupdate', releaseEdge);
   let finished = false;
   let fadeFrame;
   let lastOpacity = 1;
   function fadeVideoTail() {
     if (finished) return;
+    releaseEdge();
     if (Number.isFinite(video.duration) && video.duration > 0) {
       const fadeDuration = 1.3;
       const progress = Math.min(1, Math.max(0, (video.currentTime - (video.duration - fadeDuration)) / fadeDuration));

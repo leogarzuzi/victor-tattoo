@@ -16,10 +16,31 @@
   const head = document.querySelector('.marble-head');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const mouse = matchMedia('(hover: hover) and (pointer: fine)');
+  const previewCards = [...preview.querySelectorAll('a')];
   let pointer = null;
   let scheduled = false;
+  // The torn diagonal edges flatten as each section rises, like the tear closing.
+  const cutSections = [document.querySelector('#trabalhos'), about];
+  function updateCuts() {
+    if (reduced.matches) { cutSections.forEach(section => section.style.removeProperty('--cut')); return; }
+    cutSections.forEach(section => {
+      const depth = parseFloat(getComputedStyle(section).marginTop) * -1 || 0;
+      const progress = Math.min(1, Math.max(0, (innerHeight * .95 - section.getBoundingClientRect().top) / (innerHeight * .8)));
+      const eased = progress * progress * (3 - 2 * progress);
+      section.style.setProperty('--cut', `${(depth * (1 - eased * .7)).toFixed(1)}px`);
+    });
+  }
   function update() {
     scheduled = false; header.classList.toggle('is-scrolled', scrollY > 35);
+    updateCuts();
+    const previewTop = preview.getBoundingClientRect().top;
+    previewCards.forEach(card => {
+      const center = previewTop + card.offsetTop + card.offsetHeight / 2;
+      const focus = mouse.matches || reduced.matches ? 0 : Math.max(0, 1 - Math.abs(center - innerHeight * .5) / (innerHeight * .42));
+      card.style.setProperty('--photo-scale', String(1 + focus * .075));
+      card.style.setProperty('--photo-lift', `${-8 * focus}px`);
+      card.classList.toggle('is-scroll-highlight', focus > .4);
+    });
     if (reduced.matches) { head.style.setProperty('--eye-y', '0px'); return; }
     // A white outline moves inside each black socket; the center stays hollow.
     const bounds = head.getBoundingClientRect();
@@ -43,14 +64,16 @@
     if (!scheduled) { scheduled = true; requestAnimationFrame(update); }
   }, { passive: true });
   addEventListener('scroll', () => { if (!scheduled) { scheduled = true; requestAnimationFrame(update); } }, { passive: true });
-  addEventListener('resize', update); reduced.addEventListener('change', update); update();
+  addEventListener('resize', update); reduced.addEventListener('change', update); mouse.addEventListener('change', update); update();
   const dialog = document.querySelector('.booking-dialog');
   const form = document.querySelector('#booking-form');
   const feedback = dialog.querySelector('.booking-status');
   let opener;
   const phone = String(window.VICTOR_CONFIG?.whatsapp || '').replace(/\D/g, '');
   const submit = form.querySelector('[type="submit"]');
-  submit.innerHTML = (phone ? 'Continuar no WhatsApp ' : 'Copiar meu pedido ') + window.SITE_ARROW;
+  const submitLabel = phone ? 'Enviar no WhatsApp' : 'Copiar meu pedido';
+  submit.dataset.text = submitLabel;
+  submit.querySelector('.btn-text').textContent = submitLabel;
   function openBooking(button, idea) {
     opener = button;
     if (idea) form.elements.idea.value = idea;
@@ -60,12 +83,20 @@
     if (!reduced.matches) dialog.animate([{ transform: 'translateX(100%)', opacity: .3 }, { transform: 'translateX(0)', opacity: 1 }], { duration: 450, easing: 'cubic-bezier(.22,1,.36,1)' });
     form.elements.name.focus({ preventScroll: true });
   }
-  document.querySelectorAll('[data-booking], [data-idea]').forEach(button => button.addEventListener('click', () => openBooking(button, button.dataset.idea)));
-  document.querySelector('[data-whatsapp]').addEventListener('click', event => {
-    if (phone) {
-      location.href = `https://wa.me/${phone}?text=${encodeURIComponent('Olá, Victor! Quero conversar sobre um projeto 100% freehand para o meu corpo.')}`;
-    } else openBooking(event.currentTarget);
-  });
+  document.querySelectorAll('[data-booking], [data-idea]').forEach(button => button.addEventListener('click', event => {
+    if (button.tagName === 'A') event.preventDefault();
+    openBooking(button, button.dataset.idea);
+  }));
+  // Deep link from other pages: index.html#agendar opens the booking form.
+  if (location.hash === '#agendar') {
+    history.replaceState(null, '', location.pathname + location.search);
+    const openFromLink = () => { if (!dialog.open) openBooking(null); };
+    if (!document.querySelector('.intro')) openFromLink();
+    else {
+      addEventListener('intro:complete', openFromLink, { once: true });
+      if (matchMedia('(max-width: 640px)').matches) setTimeout(openFromLink, 2000);
+    }
+  }
   function closeBooking() { dialog.close(); }
   dialog.querySelector('.booking-close').addEventListener('click', closeBooking);
   dialog.addEventListener('click', event => { if (event.target === dialog && event.clientX < dialog.getBoundingClientRect().left) closeBooking(); });

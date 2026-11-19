@@ -32,7 +32,7 @@
       const context = canvas.getContext('2d');
       context.fillStyle = '#fff'; context.fillRect(0, 0, canvas.width, canvas.height);
       context.fillStyle = '#111'; context.font = '40px "Cinzel Decorative", serif';
-      context.fillText('VICTORSIENAART', 64, 94);
+      context.fillText('Victor Siena', 64, 94);
       const group = works.slice(start, start + 4);
       const images = await Promise.all(group.map(async work => {
         const image = new Image(); image.src = work.cover.type === 'video' ? work.cover.thumb : work.cover.src;

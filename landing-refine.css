@@ -1,0 +1,199 @@
+/* Cyber refinements: hero message, booking calls, section labels and a readable type scale. */
+:root { --chamfer:14px; --paper:#ece9e3; }
+
+/* ——— Shared cyber pieces ——— */
+.cyber-label { margin:0 0 28px; font-size:13px!important; line-height:1.4!important; font-weight:600; font-stretch:112%; text-transform:uppercase; letter-spacing:.18em; color:#171815; opacity:.75; }
+.cyber-button { display:inline-flex; align-items:center; justify-content:space-between; gap:16px; min-height:52px; padding:15px 22px 15px 24px; border:0; background:#171815; color:var(--paper); font:inherit; font-size:14px; font-weight:700; font-stretch:112%; text-transform:uppercase; letter-spacing:.06em; text-decoration:none; cursor:pointer; clip-path:polygon(0 0,calc(100% - var(--chamfer)) 0,100% var(--chamfer),100% 100%,var(--chamfer) 100%,0 calc(100% - var(--chamfer))); transition:background .3s,color .3s; }
+.cyber-button .ui-arrow { width:20px; height:20px; transition:transform .3s; }
+.cyber-button:hover { background:#000; }
+.cyber-button:hover .ui-arrow { transform:translateX(4px); }
+.cyber-button:focus-visible { clip-path:none; outline:2px solid #171815; outline-offset:4px; }
+.cyber-link { display:inline-flex; align-items:center; gap:8px; padding:8px 0; color:inherit; border-bottom:1px solid currentColor; font-size:13px; font-weight:600; font-stretch:112%; text-transform:uppercase; letter-spacing:.1em; text-decoration:none; }
+.cyber-link .ui-arrow { width:16px; height:16px; transition:transform .3s; }
+.cyber-link:hover .ui-arrow { transform:translateX(4px); }
+
+/* ——— Header call to action ——— */
+.site-header .header-link { font-size:13px; letter-spacing:.02em; }
+.site-header .header-talk { --chamfer:8px; padding:9px 16px; border:0; border-radius:0; background:#171815; color:var(--paper); font-weight:700; font-stretch:112%; text-transform:uppercase; letter-spacing:.08em; clip-path:polygon(0 0,calc(100% - var(--chamfer)) 0,100% var(--chamfer),100% 100%,var(--chamfer) 100%,0 calc(100% - var(--chamfer))); }
+.site-header .header-talk:hover,.site-header .header-talk:focus-visible { background:#000; color:#fff; }
+
+/* ——— Hero message ——— */
+.hero-copy { position:absolute; z-index:3; left:max(5vw,24px); top:52%; transform:translateY(-50%); width:min(44vw,640px); color:#171815; }
+.landing-page .hero-copy h1 { margin:0 0 26px; color:#171815; font-size:clamp(44px,5.3vw,92px); line-height:.94; text-align:left; letter-spacing:-.025em; }
+.hero-copy h1 em { font-style:normal; color:#5b5c55; }
+.landing-page .hero-copy .hero-lead { max-width:430px; margin:0 0 34px; font-size:clamp(17px,1.3vw,20px); line-height:1.5; }
+.hero-actions { display:flex; flex-wrap:wrap; align-items:center; gap:18px 30px; }
+
+/* ——— Portfolio right after the hero ——— */
+.work-intro .work-head.landing-section { display:flex; align-items:end; justify-content:space-between; gap:20px; padding:40px max(5vw,24px) 26px; }
+.work-head .cyber-label { margin:0; }
+.photo-word { font-stretch:125%; font-weight:800; letter-spacing:-.01em; text-shadow:0 2px 18px #0006; }
+
+/* ——— Readable type scale ——— */
+.landing-page h2 { font-weight:800; line-height:1; letter-spacing:-.025em; }
+.landing-page .about-copy h2 { font-weight:400; line-height:1.12; letter-spacing:normal; }
+.landing-page .service-list h3 { font-weight:700; }
+.landing-page p { font-size:16px; line-height:1.6; }
+.section-heading p { font-size:16px; }
+.section-note { font-size:13px!important; opacity:.75; }
+.concept-card>span { font-size:15px; font-weight:600; }
+.service-list h3 { font-size:clamp(18px,1.8vw,26px); }
+.service-list p { font-size:15px; }
+.contact-section h2 { font-size:clamp(48px,8vw,130px); }
+.contact-text { display:grid; justify-items:start; gap:26px; }
+.contact-bottom p { margin:0; font-size:17px; }
+.landing-footer a { font-size:14px; }
+.landing-footer>span { font-size:12px; opacity:.75; }
+
+@media(min-width:641px) and (max-width:1250px) {
+ .hero-copy { top:55%; width:min(48vw,560px); }
+}
+@media(max-width:800px) {
+ .concept-card>span { font-size:14px; }
+ .concept-type p { font-size:15px; }
+ .about-copy>p { font-size:16px; }
+}
+@media(max-width:640px) {
+ .landing-page h2 { font-size:38px; }
+ .contact-section h2 { font-size:44px; }
+ .cyber-label { font-size:12px!important; letter-spacing:.14em; margin-bottom:22px; }
+ .hero-copy { top:calc(56px + 4svh); left:20px; right:20px; width:auto; transform:none; }
+ .landing-page .hero-copy h1 { font-size:clamp(28px,8.6vw,38px); margin-bottom:14px; }
+ .landing-page .hero-copy .hero-lead { font-size:15px; margin-bottom:18px; max-width:300px; }
+ .hero-copy .cyber-label { margin-bottom:14px; }
+ .hero-actions { gap:14px 22px; }
+ .hero-actions .cyber-button { min-height:48px; padding:12px 18px; font-size:13px; }
+ .portrait-frame { height:58%; }
+ .work-intro .work-head.landing-section { padding:34px 20px 20px; flex-direction:column; align-items:flex-start; gap:12px; }
+ .about-section .marble-side { opacity:.28; }
+ .contact-text .cyber-button { width:100%; }
+}
+@media(prefers-reduced-motion:reduce) { .cyber-button .ui-arrow,.cyber-link .ui-arrow { transition:none; } }
+
+/* ——— Opening film: a razor-sharp split until the touch ——— */
+.intro-edge { position:absolute; z-index:2; top:0; right:0; bottom:0; left:71%; background:#000; pointer-events:none; transition:opacity .35s ease; }
+.intro-edge.released { opacity:0; }
+.intro .skip-intro { z-index:3; }
+/* Fill the screen height on common desktop ratios; only the black void is cropped. */
+@media (min-width:641px) and (max-aspect-ratio:16/9) and (min-aspect-ratio:4/3) { .intro video { object-fit:cover; object-position:left center; } }
+
+/* ——— Continuous flow: torn diagonal cuts instead of hard section breaks ——— */
+:root { --void:#0b0b0a; --cut-depth:24vh; }
+.landing-page .composition::after { display:none; }
+.work-intro { --cut:var(--cut-depth); overflow-x:clip; margin-top:calc(-1 * var(--cut-depth)); padding-top:var(--cut-depth); padding-bottom:calc(var(--cut-depth) + 20px); background:var(--void); color:var(--paper); clip-path:polygon(0 var(--cut),100% 0,100% 100%,0 100%); }
+.work-intro .work-head.landing-section { padding-top:8px; }
+.work-intro .cyber-label { color:var(--paper); opacity:.7; }
+.work-intro .cyber-link { color:var(--paper); }
+.work-intro .work-preview a::after { background:linear-gradient(180deg,transparent 50%,#000a); }
+.about-section { --cut:var(--cut-depth); position:relative; z-index:4; margin-top:calc(-1 * var(--cut-depth)); background:var(--cement); clip-path:polygon(0 0,100% var(--cut),100% 100%,0 100%); }
+.about-section .about-copy { padding-top:calc(100px + var(--cut-depth)); }
+/* Concrete grain over the whole page ties cement and void together. */
+body.landing-page::after { content:''; position:fixed; inset:0; z-index:20; pointer-events:none; opacity:.07; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+@media(max-width:640px) {
+ :root { --cut-depth:14vh; }
+ .about-section .about-copy { padding-top:calc(65px + var(--cut-depth)); }
+}
+
+/* ——— Palette for the dark surfaces ——— */
+:root { --gold:#c9a45c; --gold-dim:#c9a45c4d; --ink-panel:#0d0d0b; --bone:#ece8df; }
+
+/* ——— WhatsApp: one quiet button that follows the page ——— */
+.whats-float { position:fixed; z-index:26; right:max(20px,env(safe-area-inset-right)); bottom:max(20px,env(safe-area-inset-bottom)); display:flex; align-items:center; gap:0; height:54px; min-width:54px; padding:0 15px; border-radius:27px; background:var(--ink-panel); color:var(--gold); border:1px solid var(--gold-dim); box-shadow:0 8px 24px #0005; text-decoration:none; transition:gap .35s ease,box-shadow .35s ease,border-color .35s ease,opacity .3s ease; }
+.whats-float svg { flex:none; width:24px; height:24px; }
+.whats-float .bubble { fill:none; stroke:currentColor; stroke-width:1.6; stroke-linejoin:round; }
+.whats-float .phone { fill:currentColor; }
+.whats-float span { max-width:0; overflow:hidden; white-space:nowrap; font-size:13px; font-weight:700; font-stretch:112%; text-transform:uppercase; letter-spacing:.1em; transition:max-width .4s cubic-bezier(.22,1,.36,1); }
+.whats-float:hover,.whats-float:focus-visible { gap:10px; border-color:var(--gold); box-shadow:0 10px 30px #0006,0 0 18px #c9a45c33; }
+.whats-float:hover span,.whats-float:focus-visible span { max-width:120px; }
+.whats-float:focus-visible { outline:2px solid var(--gold); outline-offset:4px; }
+body.booking-open .whats-float { opacity:0; pointer-events:none; }
+@media(max-width:640px) { .whats-float { height:50px; min-width:50px; padding:0 13px; right:16px; bottom:max(16px,env(safe-area-inset-bottom)); } }
+
+/* ——— Booking panel: glitch terminal in ink and gold (form base from Uiverse.io by pharmacist-sabot, MIT) ——— */
+.booking-dialog { --glitch:.5s; background:var(--ink-panel); color:var(--bone); border-left:1px solid var(--gold-dim); box-shadow:-20px 0 60px #0008; }
+.booking-dialog::backdrop { background:#000b; backdrop-filter:blur(4px); }
+.booking-dialog .card-header { display:flex; align-items:center; gap:14px; padding:12px 14px 12px 24px; background:#0005; border-bottom:1px solid var(--gold-dim); }
+.booking-dialog .card-title { display:flex; align-items:center; gap:8px; margin-right:auto; color:var(--gold); font-size:12px; font-weight:700; font-stretch:112%; text-transform:uppercase; letter-spacing:.14em; }
+.booking-dialog .card-title svg { width:17px; height:17px; stroke:var(--gold); }
+.booking-dialog .card-dots { display:flex; gap:6px; }
+.booking-dialog .card-dots span { width:8px; height:8px; border-radius:50%; background:#2b2a26; }
+.booking-dialog .card-dots span:first-child { background:var(--gold-dim); }
+.booking-dialog .booking-close { position:static; width:40px; height:40px; color:var(--bone); font:300 30px/1 var(--font-ui); opacity:.75; }
+.booking-dialog .booking-close:hover { color:var(--gold); opacity:1; }
+.booking-dialog .booking-inner { padding:38px 40px 40px; }
+.booking-dialog h2 { margin:0 0 14px; color:var(--bone); font-size:44px; }
+.booking-dialog h2 em { font-style:normal; color:var(--gold); }
+.landing-page .booking-dialog .booking-intro { margin:0 0 30px; font-size:15px; color:#ece8dfb3; }
+#booking-form { gap:8px; }
+#booking-form .form-group { position:relative; display:block; padding-top:20px; margin-bottom:12px; }
+#booking-form .form-group input,#booking-form .form-group textarea { display:block; width:100%; padding:.7em 0; border:0; border-bottom:2px solid var(--gold-dim); border-radius:0; background:transparent; color:var(--bone); font:inherit; font-size:16px; outline:none; transition:border-color .3s ease; }
+#booking-form .form-group textarea { resize:vertical; min-height:84px; }
+#booking-form .form-group input::placeholder,#booking-form .form-group textarea::placeholder { color:transparent; transition:color .3s; }
+#booking-form .form-group input:focus::placeholder,#booking-form .form-group textarea:focus::placeholder { color:#ece8df59; }
+#booking-form .form-group input:focus,#booking-form .form-group textarea:focus { border-color:var(--gold); }
+#booking-form .form-label { position:absolute; display:block; left:0; top:calc(20px + .75em); margin:0; color:var(--gold); opacity:.65; font-size:14px; font-weight:600; font-stretch:112%; text-transform:uppercase; letter-spacing:.1em; white-space:nowrap; pointer-events:none; transition:top .3s ease,font-size .3s ease,opacity .3s ease; }
+#booking-form .form-group :is(input,textarea):focus + .form-label,#booking-form .form-group :is(input,textarea):not(:placeholder-shown) + .form-label { top:0; font-size:11px; opacity:1; }
+#booking-form .form-group :is(input,textarea):focus + .form-label::before,#booking-form .form-group :is(input,textarea):focus + .form-label::after { content:attr(data-text); position:absolute; inset:0; background:var(--ink-panel); }
+#booking-form .form-group :is(input,textarea):focus + .form-label::before { color:var(--bone); animation:glitch-anim var(--glitch) cubic-bezier(.25,.46,.45,.94) both; }
+#booking-form .form-group :is(input,textarea):focus + .form-label::after { color:var(--gold); animation:glitch-anim var(--glitch) cubic-bezier(.25,.46,.45,.94) reverse both; }
+#booking-form .form-pair { gap:22px; }
+.booking-dialog .form-note,.booking-dialog .booking-status { margin:0; color:#ece8df99; font-size:13px!important; line-height:1.6; }
+.booking-dialog .booking-status:not(:empty) { margin-top:8px; color:var(--gold); }
+.submit-btn { position:relative; width:100%; margin-top:16px; padding:.95em; overflow:hidden; border:2px solid var(--gold); background:transparent; color:var(--gold); font:inherit; font-size:15px; font-weight:800; font-stretch:115%; text-transform:uppercase; letter-spacing:.2em; cursor:pointer; transition:background .3s,color .3s,box-shadow .3s; }
+.submit-btn .btn-text { position:relative; z-index:1; transition:opacity .2s ease; }
+.submit-btn::before,.submit-btn::after { content:attr(data-text); position:absolute; inset:0; display:flex; align-items:center; justify-content:center; opacity:0; background:var(--gold); transition:opacity .2s ease; }
+.submit-btn:hover,.submit-btn:focus-visible { background:var(--gold); color:var(--ink-panel); box-shadow:0 0 25px #c9a45c80; outline:none; }
+.submit-btn:hover .btn-text,.submit-btn:focus-visible .btn-text { opacity:0; }
+.submit-btn:hover::before,.submit-btn:focus-visible::before { opacity:1; color:var(--bone); animation:glitch-anim var(--glitch) cubic-bezier(.25,.46,.45,.94) both; }
+.submit-btn:hover::after,.submit-btn:focus-visible::after { opacity:1; color:var(--ink-panel); animation:glitch-anim var(--glitch) cubic-bezier(.25,.46,.45,.94) reverse both; }
+.submit-btn:active { transform:scale(.98); }
+@keyframes glitch-anim {
+ 0% { transform:translate(0); clip-path:inset(0 0 0 0); }
+ 20% { transform:translate(-5px,3px); clip-path:inset(50% 0 20% 0); }
+ 40% { transform:translate(3px,-2px); clip-path:inset(20% 0 60% 0); }
+ 60% { transform:translate(-4px,2px); clip-path:inset(80% 0 5% 0); }
+ 80% { transform:translate(4px,-3px); clip-path:inset(30% 0 45% 0); }
+ 100% { transform:translate(0); clip-path:inset(0 0 0 0); }
+}
+@media(max-width:640px) { .booking-dialog .booking-inner { padding:28px 22px 32px; } .booking-dialog h2 { font-size:36px; } #booking-form .form-pair { grid-template-columns:1fr; gap:0; } }
+@media(prefers-reduced-motion:reduce) {
+ .whats-float,.whats-float span { transition:none; }
+ #booking-form .form-group :is(input,textarea):focus + .form-label::before,#booking-form .form-group :is(input,textarea):focus + .form-label::after,.submit-btn:hover::before,.submit-btn:focus-visible::before,.submit-btn:hover::after,.submit-btn:focus-visible::after { animation:none; opacity:0; }
+ .submit-btn:hover .btn-text,.submit-btn:focus-visible .btn-text { opacity:1; }
+}
+
+/* ——— "O próximo traço": endless carousel of available designs ——— */
+.available-section { overflow-x:clip; }
+.avail-carousel { margin:0 calc(-1 * max(5vw,24px)); padding:6px 0 10px; overflow:hidden; touch-action:pan-y; cursor:grab; user-select:none; -webkit-user-select:none; mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent); }
+.avail-carousel.is-dragging { cursor:grabbing; }
+.avail-track { display:flex; gap:22px; width:max-content; margin:0; padding:0; list-style:none; will-change:transform; }
+.avail-item { flex:none; width:clamp(230px,22vw,320px); }
+.avail-card { display:block; width:100%; padding:0; border:0; background:none; color:inherit; text-align:left; cursor:inherit; font:inherit; }
+.avail-image { position:relative; display:block; aspect-ratio:4/5; overflow:hidden; background:#a6a39d; }
+.avail-image img { display:block; width:100%; height:100%; object-fit:cover; object-position:center 40%; pointer-events:none; transition:transform .8s cubic-bezier(.22,1,.36,1),filter .5s ease; }
+.avail-caption { display:grid; grid-template-columns:1fr auto; align-items:center; gap:2px 12px; padding:14px 2px 16px; border-bottom:1px solid #17181550; }
+.avail-caption strong { font-size:15px; font-weight:800; font-stretch:112%; text-transform:uppercase; letter-spacing:.04em; }
+.avail-caption small { grid-column:1; font-size:13px; opacity:.75; }
+.avail-caption .ui-arrow { grid-column:2; grid-row:1 / span 2; width:22px; height:22px; transition:transform .3s; }
+.avail-own .avail-image { display:flex; flex-direction:column; justify-content:space-between; padding:26px; background:var(--void); color:var(--paper); }
+.avail-symbol { flex:1; display:grid; place-items:center; font:140px/1 serif; color:var(--gold); }
+.avail-own-text { font-size:15px; line-height:1.5; }
+@media(hover:hover) and (pointer:fine) {
+ .avail-carousel:not(.is-dragging) .avail-card:hover img { transform:scale(1.04); }
+ .avail-carousel:not(.is-dragging) .avail-card:hover .ui-arrow { transform:translateX(4px); }
+}
+.avail-card:focus-visible { outline:2px solid #171815; outline-offset:4px; }
+@media(max-width:640px) {
+ .avail-carousel { margin:0 -24px; }
+ .avail-item { width:68vw; }
+ .avail-track { gap:14px; }
+}
+@media(prefers-reduced-motion:reduce) { .avail-image img,.avail-caption .ui-arrow { transition:none; } }
+
+/* ——— Marble eyes: a bolder, crisper white ring ——— */
+.about-section .eye-ring { width:22px; height:22px; border:3px solid #fff; filter:none; opacity:1; box-shadow:0 0 0 1px #0006,0 0 10px #ffffff80; }
+.about-section .eye-ring-right { width:17px; height:17px; border-width:2.6px; }
+@media(max-width:640px) {
+ .about-section .eye-ring { width:17px; height:17px; border-width:2.6px; }
+ .about-section .eye-ring-right { width:13px; height:13px; border-width:2.2px; }
+}
