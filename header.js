@@ -9,6 +9,10 @@
     brandLinks.forEach(link => { link.inert = false; });
   }
   toggle.addEventListener('click', () => {
+    header.classList.add('menu-animate');
+    const box = toggle.getBoundingClientRect();
+    header.style.setProperty('--menu-x', `${box.left + box.width / 2}px`);
+    header.style.setProperty('--menu-y', `${box.top + box.height / 2}px`);
     const open = header.classList.toggle('menu-open');
     toggle.setAttribute('aria-expanded', String(open));
     toggle.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
