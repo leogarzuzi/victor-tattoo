@@ -110,7 +110,7 @@ body.booking-open .whats-float { opacity:0; pointer-events:none; }
 @media(max-width:640px) { .whats-float { height:50px; min-width:50px; padding:0 13px; right:16px; bottom:max(16px,env(safe-area-inset-bottom)); } }
 
 /* ——— Booking panel: glitch terminal in ink and gold (form base from Uiverse.io by pharmacist-sabot, MIT) ——— */
-.booking-dialog { --glitch:.5s; background:var(--ink-panel); color:var(--bone); border-left:1px solid var(--gold-dim); box-shadow:-20px 0 60px #0008; }
+.booking-dialog { --glitch:.5s; --gold:#a3f05a; --gold-dim:#a3f05a4d; background:var(--ink-panel); color:var(--bone); border-left:1px solid var(--gold-dim); box-shadow:-20px 0 60px #0008; }
 .booking-dialog::backdrop { background:#000b; backdrop-filter:blur(4px); }
 .booking-dialog .card-header { display:flex; align-items:center; gap:14px; padding:12px 14px 12px 24px; background:#0005; border-bottom:1px solid var(--gold-dim); }
 .booking-dialog .card-title { display:flex; align-items:center; gap:8px; margin-right:auto; color:var(--gold); font-size:12px; font-weight:700; font-stretch:112%; text-transform:uppercase; letter-spacing:.14em; }
@@ -142,7 +142,7 @@ body.booking-open .whats-float { opacity:0; pointer-events:none; }
 .submit-btn { position:relative; width:100%; margin-top:16px; padding:.95em; overflow:hidden; border:2px solid var(--gold); background:transparent; color:var(--gold); font:inherit; font-size:15px; font-weight:800; font-stretch:115%; text-transform:uppercase; letter-spacing:.2em; cursor:pointer; transition:background .3s,color .3s,box-shadow .3s; }
 .submit-btn .btn-text { position:relative; z-index:1; transition:opacity .2s ease; }
 .submit-btn::before,.submit-btn::after { content:attr(data-text); position:absolute; inset:0; display:flex; align-items:center; justify-content:center; opacity:0; background:var(--gold); transition:opacity .2s ease; }
-.submit-btn:hover,.submit-btn:focus-visible { background:var(--gold); color:var(--ink-panel); box-shadow:0 0 25px #c9a45c80; outline:none; }
+.submit-btn:hover,.submit-btn:focus-visible { background:var(--gold); color:var(--ink-panel); box-shadow:0 0 25px #a3f05a80; outline:none; }
 .submit-btn:hover .btn-text,.submit-btn:focus-visible .btn-text { opacity:0; }
 .submit-btn:hover::before,.submit-btn:focus-visible::before { opacity:1; color:var(--bone); animation:glitch-anim var(--glitch) cubic-bezier(.25,.46,.45,.94) both; }
 .submit-btn:hover::after,.submit-btn:focus-visible::after { opacity:1; color:var(--ink-panel); animation:glitch-anim var(--glitch) cubic-bezier(.25,.46,.45,.94) reverse both; }
@@ -197,3 +197,7 @@ body.booking-open .whats-float { opacity:0; pointer-events:none; }
  .about-section .eye-ring { width:17px; height:17px; border-width:2.6px; }
  .about-section .eye-ring-right { width:13px; height:13px; border-width:2.2px; }
 }
+
+/* ——— LGBT+ badge in "Sobre" and studio region in the contact block ——— */
+.about-section .about-copy .about-badge { margin:0 0 24px; font-size:13px!important; line-height:1.4!important; font-weight:600; letter-spacing:.18em; opacity:.75; }
+.contact-bottom .contact-location { font-size:13px; font-weight:600; font-stretch:112%; text-transform:uppercase; letter-spacing:.14em; opacity:.75; }
