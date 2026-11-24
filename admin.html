@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#0d0d0b">
+  <title>Painel · Victor Siena</title>
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="/assets/favicon-64.png">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <!-- Loading -->
+  <section class="view view-center" id="view-loading" aria-live="polite">
+    <p class="muted">Carregando painel…</p>
+  </section>
+
+  <!-- Login -->
+  <section class="view view-center" id="view-login" hidden>
+    <form class="auth-card" id="login-form">
+      <img class="auth-logo" src="assets/victor-siena-logo-transparente-4096.png" alt="" width="40" height="68">
+      <h1>Painel do site</h1>
+      <p class="muted">Entre para editar fotos e textos.</p>
+      <label class="field"><span>Usuário</span><input name="user" autocomplete="username" autocapitalize="none" required></label>
+      <label class="field"><span>Senha</span><input name="password" type="password" autocomplete="current-password" required></label>
+      <button class="btn btn-primary" type="submit">Entrar</button>
+      <p class="form-error" role="alert"></p>
+    </form>
+  </section>
+
+  <!-- First access: choose a personal password -->
+  <section class="view view-center" id="view-password" hidden>
+    <form class="auth-card" id="first-password-form">
+      <img class="auth-logo" src="assets/victor-siena-logo-transparente-4096.png" alt="" width="40" height="68">
+      <h1>Crie sua senha</h1>
+      <p class="muted">Você entrou com a senha provisória. Escolha uma senha só sua, com pelo menos 8 caracteres.</p>
+      <label class="field"><span>Nova senha</span><input name="password" type="password" autocomplete="new-password" minlength="8" required></label>
+      <label class="field"><span>Repita a nova senha</span><input name="confirm" type="password" autocomplete="new-password" minlength="8" required></label>
+      <button class="btn btn-primary" type="submit">Salvar senha</button>
+      <p class="form-error" role="alert"></p>
+    </form>
+  </section>
+
+  <!-- Editor -->
+  <div class="view" id="view-editor" hidden>
+    <header class="topbar">
+      <img src="assets/victor-siena-logo-transparente-4096.png" alt="" width="20" height="34">
+      <strong>Painel</strong>
+      <a class="topbar-link" href="/?intro=skip" target="_blank" rel="noopener">Ver site ↗</a>
+      <button class="topbar-link" type="button" id="logout">Sair</button>
+    </header>
+    <nav class="tabs" role="tablist" aria-label="Seções do painel">
+      <button role="tab" type="button" data-tab="works" aria-selected="true">Portfólio</button>
+      <button role="tab" type="button" data-tab="available" aria-selected="false">Disponíveis</button>
+      <button role="tab" type="button" data-tab="texts" aria-selected="false">Textos</button>
+      <button role="tab" type="button" data-tab="account" aria-selected="false">Conta</button>
+    </nav>
+    <main class="panels">
+      <section class="panel" data-panel="works" role="tabpanel"></section>
+      <section class="panel" data-panel="available" role="tabpanel" hidden></section>
+      <section class="panel" data-panel="texts" role="tabpanel" hidden></section>
+      <section class="panel" data-panel="account" role="tabpanel" hidden></section>
+    </main>
+    <footer class="publish-bar">
+      <p class="publish-status" aria-live="polite">Tudo publicado.</p>
+      <button class="btn btn-primary" type="button" id="publish" disabled>Publicar no site</button>
+    </footer>
+  </div>
+
+  <div class="toast" role="status" aria-live="polite" hidden></div>
+
+  <!-- Current site content, used as the starting point until the first publish -->
+  <script src="portfolio-data.js"></script>
+  <script src="site-config.js"></script>
+  <script type="module" src="admin.js"></script>
+</body>
+</html>

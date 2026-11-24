@@ -7,6 +7,20 @@
   <meta name="theme-color" content="#b8b7b3">
   <meta name="description" content="Victor Siena — tatuador de cyber armor e blackwork autoral, 100% freehand. Veja o portfólio e agende sua tatuagem.">
   <title>Victor Siena</title>
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="/assets/favicon-64.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Victor Siena">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="Victor Siena · Tatuador Cyber Armor">
+  <meta property="og:description" content="Blackwork autoral 100% freehand, desenhado direto na sua anatomia. Centro, Rio de Janeiro.">
+  <meta property="og:url" content="/">
+  <meta property="og:image" content="/assets/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Victor Siena: retrato rasgado revelando a versão em mármore com tattoos cyber armor">
+  <meta name="twitter:card" content="summary_large_image">
   <script>if (new URLSearchParams(location.search).get('intro') === 'skip') document.documentElement.classList.add('skip-opening');</script>
   <link rel="stylesheet" href="site.css">
   <link rel="stylesheet" href="landing.css">
@@ -52,9 +66,9 @@
       </picture>
     </div>
     <div class="hero-copy">
-      <p class="cyber-label">Tatuador · Cyber Armor · 100% freehand</p>
+      <p class="cyber-label" data-edit="heroLabel">Tatuador · Cyber Armor · 100% freehand</p>
       <h1>Cyber armor<br><em>no seu corpo.</em></h1>
-      <p class="hero-lead">Blackwork autoral desenhado à mão livre, direto na sua anatomia.</p>
+      <p class="hero-lead" data-edit="heroLead">Blackwork autoral desenhado à mão livre, direto na sua anatomia.</p>
       <div class="hero-actions">
         <a class="cyber-button" href="#agendar" data-booking>Agendar tatuagem <svg class="ui-arrow" viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="m5 5 9 9-9 9m8-18 9 9-9 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         <a class="cyber-link" href="#trabalhos">Ver trabalhos</a>
@@ -67,10 +81,10 @@
   </section>
   <section id="sobre" class="about-section">
     <div class="marble-side" aria-hidden="true"><div class="marble-head"><img src="assets/marble-head.png" alt="" loading="lazy"><span class="eye-ring eye-ring-left"></span><span class="eye-ring eye-ring-right"></span></div></div>
-    <div class="about-copy landing-section"><p class="cyber-label about-badge"><span aria-hidden="true">🏳️‍🌈</span> Artista LGBT+</p><h2>Victor<br><em>Siena Art.</em></h2><p class="about-lead">Eu sou Victor Siena,<br>artista e tatuador!</p><p>Meus projetos são feitos no freehand, desenvolvidos para a anatomia de cada cliente. Cada traço é pensado para ter a melhor adaptação e encaixe no seu corpo.</p><p>Sou um artista LGBT+ e aqui todo mundo é bem-vindo.</p><p>Se você quer uma tatuagem exclusiva, feita para o seu corpo, me chama que te explico tudo.</p></div>
+    <div class="about-copy landing-section"><p class="cyber-label about-badge"><span aria-hidden="true">🏳️‍🌈</span> <span data-edit="aboutBadge">Artista LGBT+</span></p><h2>Victor<br><em>Siena Art.</em></h2><p class="about-lead" data-edit="aboutLead">Eu sou Victor Siena,<br>artista e tatuador!</p><p data-edit="aboutText1">Meus projetos são feitos no freehand, desenvolvidos para a anatomia de cada cliente. Cada traço é pensado para ter a melhor adaptação e encaixe no seu corpo.</p><p data-edit="aboutText2">Sou um artista LGBT+ e aqui todo mundo é bem-vindo.</p><p data-edit="aboutText3">Se você quer uma tatuagem exclusiva, feita para o seu corpo, me chama que te explico tudo.</p></div>
   </section>
   <section id="disponiveis" class="landing-section available-section">
-    <div class="section-heading"><h2>O próximo<br><em>traço.</em></h2><div><p>Desenhos disponíveis para tatuar. Cada um é adaptado à sua anatomia, 100% freehand.</p></div></div>
+    <div class="section-heading"><h2>O próximo<br><em>traço.</em></h2><div><p data-edit="availIntro">Desenhos disponíveis para tatuar. Cada um é adaptado à sua anatomia, 100% freehand.</p></div></div>
     <div class="avail-carousel" aria-roledescription="carrossel" aria-label="Desenhos disponíveis para tatuar">
       <ul class="avail-track">
         <li class="avail-item"><button class="avail-card" type="button" data-idea="Tenho interesse no desenho disponível: Estudo Cyber Armor."><span class="avail-image"><img src="assets/disponiveis/estudo-marmore.jpg" alt="Estátua de mármore com traços cyber pretos no ombro, peito e braço" loading="lazy" decoding="async" draggable="false"></span><span class="avail-caption"><strong>Estudo Cyber Armor</strong><small>Novos desenhos em breve</small><svg class="ui-arrow" viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="m5 5 9 9-9 9m8-18 9 9-9 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></li>
@@ -82,20 +96,20 @@
         <li class="avail-item"><button class="avail-card avail-own" type="button" data-idea="Quero criar um projeto autoral do zero."><span class="avail-image"><span class="avail-symbol" aria-hidden="true">✳</span><span class="avail-own-text">Uma tatuagem exclusiva.<br>Feita para o seu corpo.</span></span><span class="avail-caption"><strong>Um projeto seu</strong><small>Do zero, 100% freehand</small><svg class="ui-arrow" viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="m5 5 9 9-9 9m8-18 9 9-9 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></li>
       </ul>
     </div>
-    <p class="section-note">Segure para pausar e arraste para os lados. Toque em um desenho para reservar.</p>
+    <p class="section-note" data-edit="availNote">Segure para pausar e arraste para os lados. Toque em um desenho para reservar.</p>
   </section>
   <section id="servicos" class="landing-section services-section">
     <h2>Feito para<br><em>o seu corpo.</em></h2>
     <div class="service-list">
-      <button type="button" data-idea="Quero desenvolver uma tatuagem autoral."><h3>100% freehand</h3><p>Projeto desenvolvido direto no corpo, para acompanhar sua anatomia e encontrar o melhor encaixe.</p><b><svg class="ui-arrow" viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="m5 5 9 9-9 9m8-18 9 9-9 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></b></button>
-      <button type="button" data-idea="Tenho interesse em um conceito disponível."><h3>Cyber Armor</h3><p>Traços que acompanham o corpo. Uma direção para desenvolver sua próxima tatuagem exclusiva.</p><b><svg class="ui-arrow" viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="m5 5 9 9-9 9m8-18 9 9-9 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></b></button>
-      <button type="button" data-idea="Quero conversar sobre um projeto de composição corporal."><h3>Projetos exclusivos</h3><p>Da sua ideia ao resultado, uma composição desenvolvida para a sua anatomia.</p><b><svg class="ui-arrow" viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="m5 5 9 9-9 9m8-18 9 9-9 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></b></button>
+      <button type="button" data-idea="Quero desenvolver uma tatuagem autoral."><h3 data-edit="service1Title">100% freehand</h3><p data-edit="service1Text">Projeto desenvolvido direto no corpo, para acompanhar sua anatomia e encontrar o melhor encaixe.</p><b><svg class="ui-arrow" viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="m5 5 9 9-9 9m8-18 9 9-9 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></b></button>
+      <button type="button" data-idea="Tenho interesse em um conceito disponível."><h3 data-edit="service2Title">Cyber Armor</h3><p data-edit="service2Text">Traços que acompanham o corpo. Uma direção para desenvolver sua próxima tatuagem exclusiva.</p><b><svg class="ui-arrow" viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="m5 5 9 9-9 9m8-18 9 9-9 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></b></button>
+      <button type="button" data-idea="Quero conversar sobre um projeto de composição corporal."><h3 data-edit="service3Title">Projetos exclusivos</h3><p data-edit="service3Text">Da sua ideia ao resultado, uma composição desenvolvida para a sua anatomia.</p><b><svg class="ui-arrow" viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="m5 5 9 9-9 9m8-18 9 9-9 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></b></button>
     </div>
   </section>
   <section id="contato" class="landing-section contact-section">
-    <h2>O que você<br>quer <em>criar?</em></h2><div class="contact-bottom"><div class="contact-text"><p>Quer um upgrade desse também?<br>Me conta sua ideia que te explico tudo!</p><p class="contact-location">Região: Centro, Rio de Janeiro</p><button class="cyber-button" type="button" data-booking>Montar meu pedido <svg class="ui-arrow" viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="m5 5 9 9-9 9m8-18 9 9-9 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div>
+    <h2>O que você<br>quer <em>criar?</em></h2><div class="contact-bottom"><div class="contact-text"><p data-edit="contactText">Quer um upgrade desse também?<br>Me conta sua ideia que te explico tudo!</p><p class="contact-location" data-edit="region">Região: Centro, Rio de Janeiro</p><button class="cyber-button" type="button" data-booking>Montar meu pedido <svg class="ui-arrow" viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="m5 5 9 9-9 9m8-18 9 9-9 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div>
   </section>
-  <footer class="landing-footer"><a href="#inicio">Victor Siena</a><div><a href="portfolio.html">Portfólio <svg class="ui-arrow" viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="m5 5 9 9-9 9m8-18 9 9-9 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a href="#disponiveis">Disponíveis</a><a href="#sobre">Sobre</a><a href="#servicos">Serviços</a><a href="#contato">Agendamentos</a></div><span>Cyber Armor • 100% freehand. • Região: Centro, Rio de Janeiro</span></footer>
+  <footer class="landing-footer"><a href="#inicio">Victor Siena</a><div><a href="portfolio.html">Portfólio <svg class="ui-arrow" viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="m5 5 9 9-9 9m8-18 9 9-9 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a href="#disponiveis">Disponíveis</a><a href="#sobre">Sobre</a><a href="#servicos">Serviços</a><a href="#contato">Agendamentos</a></div><span>Cyber Armor • 100% freehand. • <span data-edit="region">Região: Centro, Rio de Janeiro</span></span></footer>
   </main>
   <dialog class="booking-dialog" aria-labelledby="booking-title">
     <div class="card-header"><span class="card-title"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m4 17 6-5-6-5M12 19h8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Novo projeto</span><span class="card-dots" aria-hidden="true"><span></span><span></span><span></span></span><button type="button" class="booking-close" aria-label="Fechar formulário">×</button></div>
@@ -119,6 +133,8 @@
   <script src="ui-icons.js"></script>
   <script src="portfolio-data.js"></script>
   <script src="site-config.js"></script>
+  <script src="/api/content?format=js"></script>
+  <script src="site-content.js"></script>
   <script src="available-carousel.js"></script>
   <script src="landing.js"></script>
   <script src="whatsapp-float.js"></script>

@@ -37,6 +37,7 @@ git push
 - `intro.js`: vídeo de abertura no desktop e entrada suave no mobile.
 - `header.js`: menu de navegação e animação do ícone.
 - `server.cjs`: servidor local na porta 3000.
+- `admin.html`, `admin.js`, `api/`: painel para editar fotos e textos (veja `ADMIN.md`).
 - `assets/`: imagens, vídeos e fontes locais.
 - `referencias-flow/`: referências visuais usadas na produção.
 
