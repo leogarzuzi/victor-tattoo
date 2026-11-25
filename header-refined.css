@@ -37,3 +37,16 @@
  .collection { padding-top:56px; }
  html { scroll-padding-top:56px; }
 }
+
+/* ——— Dark header: the Instagram charcoal, the green emblem and a green "Agendar" ——— */
+:root { --header-bg:#1c1c1c; --header-text:#ece8df; --header-green:#a3f05a; }
+.landing-page .site-header, .portfolio-page .site-header, body.portfolio-page .site-header { color:var(--header-text); background:var(--header-bg); }
+.landing-page .site-header.is-scrolled { background:var(--header-bg); }
+.landing-page .site-header::before, .portfolio-page .site-header::before { background:var(--header-bg); backdrop-filter:none; -webkit-backdrop-filter:none; box-shadow:none; border-bottom:1px solid #ffffff14; }
+.site-header .header-logo img, .site-header .mobile-menu-logo img { filter:none; }
+.landing-page .site-header .header-talk, .portfolio-page .site-header .header-talk { background:var(--header-green); color:#0d0d0b; }
+.landing-page .site-header .header-talk:hover, .landing-page .site-header .header-talk:focus-visible,
+.portfolio-page .site-header .header-talk:hover, .portfolio-page .site-header .header-talk:focus-visible { background:#b8f57d; color:#0d0d0b; }
+@media(max-width:640px) {
+ .landing-page .site-header .header-nav, .portfolio-page .site-header .header-nav { background:var(--header-bg); }
+}
