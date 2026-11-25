@@ -15,5 +15,5 @@ module.exports = route(['GET', 'POST', 'DELETE'], async (req, res) => {
     return send(res, 200, { user: result.user, mustChange: result.mustChange });
   }
   const session = await auth.getSession(req);
-  send(res, 200, { user: session?.user || null, mustChange: Boolean(session?.mustChange), storage: storage.isLocal() ? 'local' : 'blob' });
+  send(res, 200, { user: session?.user || null, mustChange: Boolean(session?.mustChange), storage: { readWrite: 'blob', oidc: 'blob-presigned', local: 'local' }[storage.mode()] });
 });

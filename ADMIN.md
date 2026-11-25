@@ -16,7 +16,8 @@ Enquanto você edita, um rascunho fica guardado no navegador.
 1. **Criar o armazenamento**
    Projeto na Vercel → aba **Storage** → **Create Database** → **Blob**.
    Se for perguntado o tipo de acesso, escolha **Public**.
-   Conecte o Blob a este projeto em todos os ambientes. A Vercel cria sozinha a variável `BLOB_READ_WRITE_TOKEN`.
+   Conecte o Blob a este projeto (aba **Projects** do Blob → **Connect Project**) em todos os ambientes.
+   A Vercel cria sozinha a variável `BLOB_STORE_ID` (stores novos) ou `BLOB_READ_WRITE_TOKEN` (stores antigos); o painel funciona com as duas.
 
 2. **Criar as variáveis do login**
    Projeto → **Settings** → **Environment Variables**. Adicione em *Production* e *Preview*:

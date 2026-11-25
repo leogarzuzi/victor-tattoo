@@ -33,7 +33,7 @@ function route(methods, handler) {
   return async (req, res) => {
     if (!methods.includes(req.method)) return send(res, 405, { error: 'Método não permitido.' });
     if (req.method !== 'GET' && !sameOrigin(req)) return send(res, 403, { error: 'Origem não permitida.' });
-    try { await handler(req, res); }
+    try { await require('./storage').withRequest(req, () => handler(req, res)); }
     catch (error) {
       console.error(error);
       send(res, error.status || 500, { error: error.status ? error.message : 'Erro no servidor. Tente de novo em instantes.' });

@@ -196,7 +196,9 @@ async function uploadFile(pathname, blob, onProgress) {
     });
   }
   blobClient ||= await import(BLOB_CLIENT);
-  const result = await blobClient.upload(pathname, blob, {
+  // Stores connected the new way take a presigned URL; older ones a client token.
+  const send = state.storage === 'blob-presigned' ? blobClient.uploadPresigned : blobClient.upload;
+  const result = await send(pathname, blob, {
     access: 'public', handleUploadUrl: '/api/upload', contentType: blob.type,
     multipart: blob.size > 8 * 1024 * 1024,
     onUploadProgress: ({ percentage }) => onProgress(percentage / 100),

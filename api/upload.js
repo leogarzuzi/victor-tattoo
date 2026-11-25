@@ -30,8 +30,31 @@ const handler = route(['POST'], async (req, res) => {
     const saved = await storage.put(pathname, await readRaw(req, MAX_BYTES), type);
     return send(res, 200, saved);
   }
-  const { handleUpload } = require('@vercel/blob/client');
   const payload = body(req);
+  const invalid = () => { const error = new Error('Nome de arquivo inválido.'); error.status = 400; throw error; };
+
+  // Stores connected the new way (OIDC): the browser gets a presigned URL limited to one file.
+  if (storage.mode() === 'oidc') {
+    if (payload.type !== 'blob.generate-presigned-url') return send(res, 400, { error: 'Pedido de envio inválido.' });
+    await requireSession(req);
+    const { handleUploadPresigned } = require('@vercel/blob/client');
+    const { issueSignedToken } = require('@vercel/blob');
+    const limits = { allowedContentTypes: Object.keys(TYPES), maximumSizeInBytes: MAX_BYTES };
+    const result = await handleUploadPresigned({
+      body: payload,
+      request: req,
+      // Only checked for upload-completed callbacks, which this site does not use.
+      webhookPublicKey: process.env.BLOB_WEBHOOK_PUBLIC_KEY || 'not-used',
+      getSignedToken: async pathname => {
+        if (!validPath(pathname)) invalid();
+        const token = await issueSignedToken({ ...storage.auth(), ...limits, pathname, operations: ['put'], validUntil: Date.now() + 15 * 60e3 });
+        return { token, urlOptions: { ...limits, addRandomSuffix: true, cacheControlMaxAge: 60 * 60 * 24 * 365 } };
+      },
+    });
+    return send(res, 200, result);
+  }
+
+  const { handleUpload } = require('@vercel/blob/client');
   // Only the token request comes from the browser; it must carry an admin session.
   if (payload.type === 'blob.generate-client-token') await requireSession(req);
   const result = await handleUpload({
@@ -39,7 +62,7 @@ const handler = route(['POST'], async (req, res) => {
     request: req,
     token: storage.token(),
     onBeforeGenerateToken: async pathname => {
-      if (!validPath(pathname)) { const error = new Error('Nome de arquivo inválido.'); error.status = 400; throw error; }
+      if (!validPath(pathname)) invalid();
       return { allowedContentTypes: Object.keys(TYPES), maximumSizeInBytes: MAX_BYTES, addRandomSuffix: true, cacheControlMaxAge: 60 * 60 * 24 * 365 };
     },
   });

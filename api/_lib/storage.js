@@ -1,8 +1,14 @@
 // Storage for the admin area.
-// On Vercel it uses Vercel Blob (BLOB_READ_WRITE_TOKEN). On a local machine without a token
-// it falls back to the .local-data folder, so the admin can be tried with `npm run dev`.
+// On Vercel it uses Vercel Blob. New stores connect through OIDC (BLOB_STORE_ID, with a
+// per-request token in the x-vercel-oidc-token header); older ones through BLOB_READ_WRITE_TOKEN.
+// On a local machine without either it falls back to the .local-data folder (`npm run dev`).
 const fs = require('node:fs/promises');
 const path = require('node:path');
+const { AsyncLocalStorage } = require('node:async_hooks');
+
+// The request being handled, so Blob calls can use its OIDC token.
+const requestContext = new AsyncLocalStorage();
+const withRequest = (req, fn) => requestContext.run(req, fn);
 
 const LOCAL_ROOT = path.join(__dirname, '..', '..', '.local-data', 'blobs');
 // Vercel names the variable BLOB_READ_WRITE_TOKEN, or <PREFIX>_READ_WRITE_TOKEN when the store
@@ -12,7 +18,18 @@ function token() {
   const key = Object.keys(process.env).find(name => /READ_WRITE_TOKEN$/.test(name) && String(process.env[name]).startsWith('vercel_blob_rw_'));
   return key ? process.env[key] : '';
 }
-const isLocal = () => !token();
+const storeId = () => (process.env.BLOB_STORE_ID || '').trim();
+// 'readWrite' (classic token), 'oidc' (store connected the new way) or 'local'.
+const mode = () => (token() ? 'readWrite' : storeId() ? 'oidc' : 'local');
+const isLocal = () => mode() === 'local';
+
+// Credentials for every Blob SDK call.
+function auth() {
+  if (mode() === 'readWrite') return { token: token() };
+  const req = requestContext.getStore();
+  const oidcToken = req?.headers?.['x-vercel-oidc-token'] || process.env.VERCEL_OIDC_TOKEN;
+  return { storeId: storeId(), ...(oidcToken ? { oidcToken } : {}) };
+}
 
 function assertConfigured() {
   if (isLocal() && process.env.VERCEL) {
@@ -58,7 +75,7 @@ async function list(prefix) {
   const result = [];
   let cursor;
   do {
-    const page = await blob().list({ prefix, cursor, limit: 1000, token: token() });
+    const page = await blob().list({ prefix, cursor, limit: 1000, ...auth() });
     result.push(...page.blobs.map(item => ({ url: item.url, pathname: item.pathname, uploadedAt: new Date(item.uploadedAt) })));
     cursor = page.hasMore ? page.cursor : undefined;
   } while (cursor);
@@ -73,7 +90,7 @@ async function put(pathname, body, contentType) {
     await fs.writeFile(file, body);
     return { url: `/local-blob/${pathname}`, pathname };
   }
-  const result = await blob().put(pathname, body, { access: 'public', addRandomSuffix: true, contentType, cacheControlMaxAge: 60 * 60 * 24 * 365, token: token() });
+  const result = await blob().put(pathname, body, { access: 'public', addRandomSuffix: true, contentType, cacheControlMaxAge: 60 * 60 * 24 * 365, ...auth() });
   return { url: result.url, pathname: result.pathname };
 }
 
@@ -84,7 +101,7 @@ async function remove(items) {
     await Promise.all(items.map(item => fs.rm(safeLocalPath(item.pathname), { force: true })));
     return;
   }
-  for (let i = 0; i < items.length; i += 100) await blob().del(items.slice(i, i + 100).map(item => item.url), { token: token() });
+  for (let i = 0; i < items.length; i += 100) await blob().del(items.slice(i, i + 100).map(item => item.url), auth());
 }
 
 async function readFile(item) {
@@ -110,4 +127,4 @@ async function writeJSON(prefix, data, keep = 3) {
   await remove(files.slice(0, Math.max(0, files.length - keep)));
 }
 
-module.exports = { token, isLocal, list, put, remove, readLatestJSON, writeJSON, LOCAL_ROOT, safeLocalPath };
+module.exports = { token, mode, auth, withRequest, isLocal, list, put, remove, readLatestJSON, writeJSON, LOCAL_ROOT, safeLocalPath };
