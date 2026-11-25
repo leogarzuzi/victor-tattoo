@@ -37,6 +37,7 @@ const handler = route(['POST'], async (req, res) => {
   const result = await handleUpload({
     body: payload,
     request: req,
+    token: storage.token(),
     onBeforeGenerateToken: async pathname => {
       if (!validPath(pathname)) { const error = new Error('Nome de arquivo inválido.'); error.status = 400; throw error; }
       return { allowedContentTypes: Object.keys(TYPES), maximumSizeInBytes: MAX_BYTES, addRandomSuffix: true, cacheControlMaxAge: 60 * 60 * 24 * 365 };

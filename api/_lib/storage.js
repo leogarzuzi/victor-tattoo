@@ -5,7 +5,14 @@ const fs = require('node:fs/promises');
 const path = require('node:path');
 
 const LOCAL_ROOT = path.join(__dirname, '..', '..', '.local-data', 'blobs');
-const isLocal = () => !process.env.BLOB_READ_WRITE_TOKEN;
+// Vercel names the variable BLOB_READ_WRITE_TOKEN, or <PREFIX>_READ_WRITE_TOKEN when the store
+// was connected with a custom prefix; Blob tokens always start with vercel_blob_rw_.
+function token() {
+  if (process.env.BLOB_READ_WRITE_TOKEN) return process.env.BLOB_READ_WRITE_TOKEN;
+  const key = Object.keys(process.env).find(name => /READ_WRITE_TOKEN$/.test(name) && String(process.env[name]).startsWith('vercel_blob_rw_'));
+  return key ? process.env[key] : '';
+}
+const isLocal = () => !token();
 
 function assertConfigured() {
   if (isLocal() && process.env.VERCEL) {
@@ -51,7 +58,7 @@ async function list(prefix) {
   const result = [];
   let cursor;
   do {
-    const page = await blob().list({ prefix, cursor, limit: 1000 });
+    const page = await blob().list({ prefix, cursor, limit: 1000, token: token() });
     result.push(...page.blobs.map(item => ({ url: item.url, pathname: item.pathname, uploadedAt: new Date(item.uploadedAt) })));
     cursor = page.hasMore ? page.cursor : undefined;
   } while (cursor);
@@ -66,7 +73,7 @@ async function put(pathname, body, contentType) {
     await fs.writeFile(file, body);
     return { url: `/local-blob/${pathname}`, pathname };
   }
-  const result = await blob().put(pathname, body, { access: 'public', addRandomSuffix: true, contentType, cacheControlMaxAge: 60 * 60 * 24 * 365 });
+  const result = await blob().put(pathname, body, { access: 'public', addRandomSuffix: true, contentType, cacheControlMaxAge: 60 * 60 * 24 * 365, token: token() });
   return { url: result.url, pathname: result.pathname };
 }
 
@@ -77,7 +84,7 @@ async function remove(items) {
     await Promise.all(items.map(item => fs.rm(safeLocalPath(item.pathname), { force: true })));
     return;
   }
-  for (let i = 0; i < items.length; i += 100) await blob().del(items.slice(i, i + 100).map(item => item.url));
+  for (let i = 0; i < items.length; i += 100) await blob().del(items.slice(i, i + 100).map(item => item.url), { token: token() });
 }
 
 async function readFile(item) {
@@ -103,4 +110,4 @@ async function writeJSON(prefix, data, keep = 3) {
   await remove(files.slice(0, Math.max(0, files.length - keep)));
 }
 
-module.exports = { isLocal, list, put, remove, readLatestJSON, writeJSON, LOCAL_ROOT, safeLocalPath };
+module.exports = { token, isLocal, list, put, remove, readLatestJSON, writeJSON, LOCAL_ROOT, safeLocalPath };
