@@ -97,13 +97,13 @@ body.landing-page::after { content:''; position:fixed; inset:0; z-index:20; poin
 /* ——— Palette for the dark surfaces ——— */
 :root { --gold:#c9a45c; --gold-dim:#c9a45c4d; --ink-panel:#0d0d0b; --bone:#ece8df; }
 
-/* ——— WhatsApp: one quiet button that follows the page ——— */
-.whats-float { position:fixed; z-index:26; right:max(20px,env(safe-area-inset-right)); bottom:max(20px,env(safe-area-inset-bottom)); display:flex; align-items:center; gap:0; height:54px; min-width:54px; padding:0 15px; border-radius:27px; background:var(--ink-panel); color:var(--gold); border:1px solid var(--gold-dim); box-shadow:0 8px 24px #0005; text-decoration:none; transition:gap .35s ease,box-shadow .35s ease,border-color .35s ease,opacity .3s ease; }
+/* ——— WhatsApp: one quiet button that follows the page, in the logo green ——— */
+.whats-float { --gold:#a3f05a; --gold-dim:#a3f05a4d; position:fixed; z-index:26; right:max(20px,env(safe-area-inset-right)); bottom:max(20px,env(safe-area-inset-bottom)); display:flex; align-items:center; gap:0; height:54px; min-width:54px; padding:0 15px; border-radius:27px; background:var(--ink-panel); color:var(--gold); border:1px solid var(--gold-dim); box-shadow:0 8px 24px #0005; text-decoration:none; transition:gap .35s ease,box-shadow .35s ease,border-color .35s ease,opacity .3s ease; }
 .whats-float svg { flex:none; width:24px; height:24px; }
 .whats-float .bubble { fill:none; stroke:currentColor; stroke-width:1.6; stroke-linejoin:round; }
 .whats-float .phone { fill:currentColor; }
 .whats-float span { max-width:0; overflow:hidden; white-space:nowrap; font-size:13px; font-weight:700; font-stretch:112%; text-transform:uppercase; letter-spacing:.1em; transition:max-width .4s cubic-bezier(.22,1,.36,1); }
-.whats-float:hover,.whats-float:focus-visible { gap:10px; border-color:var(--gold); box-shadow:0 10px 30px #0006,0 0 18px #c9a45c33; }
+.whats-float:hover,.whats-float:focus-visible { gap:10px; border-color:var(--gold); box-shadow:0 10px 30px #0006,0 0 18px #a3f05a33; }
 .whats-float:hover span,.whats-float:focus-visible span { max-width:120px; }
 .whats-float:focus-visible { outline:2px solid var(--gold); outline-offset:4px; }
 body.booking-open .whats-float { opacity:0; pointer-events:none; }
