@@ -4,6 +4,5 @@
 body { font-family:var(--font-ui); font-stretch:100%; -webkit-font-smoothing:antialiased; }
 h1,h2,h3,h4,h5,h6,.photo-word { font-family:var(--font-title); font-weight:800; font-stretch:125%; text-transform:uppercase; letter-spacing:-.02em; }
 h3 { font-weight:700; letter-spacing:.01em; }
-.site-header .header-name,.about-copy h2,.landing-footer>a { font-family:var(--font-brand); font-stretch:normal; text-transform:none; letter-spacing:normal; }
-.about-copy h2 { font-weight:400; }
+.site-header .header-name,.landing-footer>a { font-family:var(--font-brand); font-stretch:normal; text-transform:none; letter-spacing:normal; }
 .portfolio-page h1 { font-weight:800; }

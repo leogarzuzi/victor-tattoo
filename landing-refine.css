@@ -190,12 +190,23 @@ body.booking-open .whats-float { opacity:0; pointer-events:none; }
 }
 @media(prefers-reduced-motion:reduce) { .avail-image img,.avail-caption .ui-arrow { transition:none; } }
 
-/* ——— Marble eyes: a bolder, crisper white ring ——— */
-.about-section .eye-ring { width:22px; height:22px; border:3px solid #fff; filter:none; opacity:1; box-shadow:0 0 0 1px #0006,0 0 10px #ffffff80; }
-.about-section .eye-ring-right { width:17px; height:17px; border-width:2.6px; }
+/* ——— "Sobre": text on the left, the tattooed marble bust on the right ——— */
+/* Multiply melts the photo's pale studio backdrop into the cement (set on the layer that owns the stacking context). */
+.about-section .marble-side { inset:0 0 0 auto; left:auto; right:0; width:50%; height:100%; display:flex; align-items:flex-end; justify-content:center; opacity:1; overflow:hidden; mix-blend-mode:multiply; }
+.marble-bust { position:relative; width:100%; height:100%; max-width:760px; }
+.marble-bust img { display:block; width:100%; height:100%; object-fit:contain; object-position:center bottom; filter:brightness(1.07) contrast(1.06); -webkit-mask-image:linear-gradient(90deg,transparent,#000 20%),linear-gradient(180deg,transparent,#000 14%); -webkit-mask-composite:source-in; mask-image:linear-gradient(90deg,transparent,#000 20%),linear-gradient(180deg,transparent,#000 14%); mask-composite:intersect; }
+.about-section .about-copy { margin-left:0; width:54%; padding-left:max(5vw,24px); padding-right:2vw; }
+.landing-page .about-section .about-copy h2,.landing-page .about-section .about-copy h2 em { font-family:var(--font-title); font-weight:800; font-stretch:125%; text-transform:uppercase; letter-spacing:-.025em; line-height:.94; }
+.landing-page .about-section .about-copy h2 { font-size:clamp(48px,5.6vw,96px); margin-bottom:34px; }
+.landing-page .about-section .about-copy h2 em { font-style:normal; color:#5b5c55; }
+.landing-page .about-section .about-copy .about-lead { font-stretch:125%; font-weight:400; text-transform:uppercase; letter-spacing:.01em; line-height:1.25; font-size:clamp(20px,1.8vw,28px); }
+@media(max-width:800px) and (min-width:641px) { .about-section .marble-side { width:46%; } .about-section .about-copy { width:58%; } }
 @media(max-width:640px) {
- .about-section .eye-ring { width:17px; height:17px; border-width:2.6px; }
- .about-section .eye-ring-right { width:13px; height:13px; border-width:2.2px; }
+ .about-section .marble-side { width:100%; opacity:.32; justify-content:flex-end; }
+ .marble-bust { width:120%; max-width:none; transform:translateX(18%); }
+ .about-section .about-copy { width:auto; padding-left:24px; padding-right:24px; }
+ .landing-page .about-section .about-copy h2 { font-size:44px; }
+ .landing-page .about-section .about-copy .about-lead { font-size:20px; }
 }
 
 /* ——— LGBT+ badge in "Sobre" and studio region in the contact block ——— */

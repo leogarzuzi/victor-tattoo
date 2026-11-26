@@ -13,11 +13,9 @@
   });
   const header = document.querySelector('.site-header');
   const about = document.querySelector('#sobre');
-  const head = document.querySelector('.marble-head');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const mouse = matchMedia('(hover: hover) and (pointer: fine)');
   const previewCards = [...preview.querySelectorAll('a')];
-  let pointer = null;
   let scheduled = false;
   // The torn diagonal edges flatten as each section rises, like the tear closing.
   const cutSections = [document.querySelector('#trabalhos'), about];
@@ -41,28 +39,7 @@
       card.style.setProperty('--photo-lift', `${-8 * focus}px`);
       card.classList.toggle('is-scroll-highlight', focus > .4);
     });
-    if (reduced.matches) { head.style.setProperty('--eye-y', '0px'); return; }
-    // A white outline moves inside each black socket; the center stays hollow.
-    const bounds = head.getBoundingClientRect();
-    const verticalRange = 6;
-    let x = 0, y = Math.max(-verticalRange, Math.min(verticalRange, (innerHeight * .5 - (bounds.top + bounds.height * .366)) / innerHeight * 38));
-    if (mouse.matches && pointer) {
-      const dx = pointer.x - (bounds.left + bounds.width * .573), dy = pointer.y - (bounds.top + bounds.height * .366);
-      const distance = Math.hypot(dx, dy);
-      const strength = Math.min(1, distance / 230);
-      x = distance ? dx / distance * 12 * strength : 0;
-      y = distance ? dy / distance * 6 * strength : 0;
-    }
-    head.style.setProperty('--eye-y', `${y}px`);
-    head.style.setProperty('--eye-x', `${x}px`);
-    head.style.setProperty('--eye-right-x', `${x * .65}px`);
-    head.style.setProperty('--eye-right-y', `${y * .7}px`);
   }
-  addEventListener('pointermove', event => {
-    if (!mouse.matches || reduced.matches) return;
-    pointer = { x: event.clientX, y: event.clientY };
-    if (!scheduled) { scheduled = true; requestAnimationFrame(update); }
-  }, { passive: true });
   addEventListener('scroll', () => { if (!scheduled) { scheduled = true; requestAnimationFrame(update); } }, { passive: true });
   addEventListener('resize', update); reduced.addEventListener('change', update); mouse.addEventListener('change', update); update();
   const dialog = document.querySelector('.booking-dialog');
