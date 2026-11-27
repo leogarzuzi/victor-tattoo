@@ -8,6 +8,15 @@
 .cyber-button:hover { background:#000; }
 .cyber-button:hover .ui-arrow { transform:translateX(4px); }
 .cyber-button:focus-visible { clip-path:none; outline:2px solid #171815; outline-offset:4px; }
+/* Hero "Agendar tatuagem": the booking green (same tone as the form) on the label and arrow only. */
+.hero-actions .cyber-button:not(.cyber-button--ghost) { color:#a3f05a; }
+/* Secondary: same chamfered slab, a fine ink frame around pale stone, ink text. Visible, one step below the black primary. */
+.cyber-button--ghost { position:relative; isolation:isolate; background:#171815; color:#171815; }
+.cyber-button--ghost::before { content:''; position:absolute; z-index:-1; inset:1.5px; background:#d3cfc7; clip-path:polygon(0 0,calc(100% - var(--chamfer) + .6px) 0,100% calc(var(--chamfer) - .6px),100% 100%,calc(var(--chamfer) - .6px) 100%,0 calc(100% - var(--chamfer) + .6px)); transition:background .3s; }
+.cyber-button--ghost:hover { background:#171815; }
+.cyber-button--ghost:hover::before { background:#e4e1da; }
+.cyber-button--ghost .ui-arrow-down { transform:rotate(90deg); }
+.cyber-button--ghost:hover .ui-arrow-down { transform:rotate(90deg) translateX(3px); }
 .cyber-link { display:inline-flex; align-items:center; gap:8px; padding:8px 0; color:inherit; border-bottom:1px solid currentColor; font-size:13px; font-weight:600; font-stretch:112%; text-transform:uppercase; letter-spacing:.1em; text-decoration:none; }
 .cyber-link .ui-arrow { width:16px; height:16px; transition:transform .3s; }
 .cyber-link:hover .ui-arrow { transform:translateX(4px); }

@@ -97,7 +97,7 @@
       .mobile-menu-logo img { display: block; width: auto; height: 76px; filter: brightness(0); }
       .intro video, .skip-intro { display: none; }
       .intro video { object-fit: cover; object-position: center center; }
-      .composition { background: #bab6af url('assets/victor-hero-v6.png') left center / auto 100% no-repeat; }
+      .composition { background: #bab6af url('assets/victor-hero-glitch.png') left center / auto 100% no-repeat; }
       .portrait-frame { inset: auto 0 -12px; width: 100%; height: 78%; aspect-ratio: auto; mask-image: linear-gradient(to bottom, transparent, #000 12%); }
       .portrait { width: 100%; height: 100%; object-fit: cover; object-position: 80% center; }
       .identity { top: 5svh; left: 8%; width: 84%; transform: none; gap: 18px; }
